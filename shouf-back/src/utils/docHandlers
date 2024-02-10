@@ -1,0 +1,51 @@
+import * as parser from "@babel/parser";
+import { codeFrameColumns } from "@babel/code-frame";
+
+
+const plugins = [
+  "jsx",
+  "asyncGenerators",
+  "classProperties",
+  "classPrivateProperties",
+  "classPrivateMethods",
+  [
+    "decorators",
+    {
+      decoratorsBeforeExport: true,
+    },
+  ],
+  "doExpressions",
+  "dynamicImport",
+  "exportDefaultFrom",
+  "exportNamespaceFrom",
+  "functionBind",
+  "functionSent",
+  "importMeta",
+  "logicalAssignment",
+  "nullishCoalescingOperator",
+  "numericSeparator",
+  "objectRestSpread",
+  "optionalCatchBinding",
+  "optionalChaining",
+  "partialApplication",
+  "throwExpressions",
+  "topLevelAwait",
+];
+
+const getAst = (code, filename) => {
+  try {
+    return parser.parse(code, {
+      sourceType: "module",
+      plugins: [
+        ...plugins,
+        // addinf specs for ts files
+        filename.endsWith(".ts") || filename.endsWith(".tsx") ? "typescript" : "flow",
+      ],
+    });
+  } catch (e) {
+    console.error(`\n\n${e.toString()} in ${filename}\n`);
+    console.error(codeFrameColumns(code, { start: e.loc }, { highlightCode: true }));
+    console.error("");
+    throw e;
+  }
+};
