@@ -2,6 +2,18 @@ import * as parser from "@babel/parser";
 import { codeFrameColumns } from "@babel/code-frame";
 
 
+/*
+*
+* This file is used to parse the code and get the AST which is the Abstract Syntax Tree
+*
+* The AST is a tree representation of the abstract syntactic structure of source code.
+* Each node of the tree denotes a construct occurring in the source code.
+* The syntax is represented in a way that is easy to understand and use.
+* The AST is used to get the props of a component and to generate the documentation
+*
+* */
+
+
 const plugins = [
   "jsx",
   "asyncGenerators",
@@ -49,3 +61,5 @@ const getAst = (code, filename) => {
     throw e;
   }
 };
+
+export { getAst };

@@ -1,0 +1,42 @@
+{
+  "name": "shouf-back",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "shouf": "bin/shouf.js"
+  },
+  "scripts": {
+    "shouf": "node bin/shouf.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "vite": "^3.0.0"
+  },
+  "devDependencies": {
+    "cac": "^6.7.12",
+    "chalk": "^5.0.1",
+    "chokidar": "^3.5.2",
+    "debug": "^4.3.2",
+    "esbuild": "^0.12.29",
+    "fast-glob": "^3.2.11",
+    "fs-extra": "^10.0.0",
+    "get-folder-size": "^3.1.0",
+    "just-debounce-it": "^1.5.0",
+    "kleur": "^4.1.4",
+    "lru-cache": "^6.0.0",
+    "ora": "^6.1.2",
+    "pkg-up": "^2.0.0",
+    "rollup": "^2.58.0",
+    "upath": "^2.0.1",
+    "vite": "^3.0.0"
+  },
+  "peerDependencies": {
+    "vite": "^3.0.0"
+  },
+
+  "publishConfig": {
+    "access": "public"
+  }
+}
