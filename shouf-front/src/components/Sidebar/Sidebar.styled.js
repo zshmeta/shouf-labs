@@ -7,7 +7,7 @@ export const SidebarContainer = styled.div`
   left: 0;
   top: 0;
   height: 100vh;
-  background-color: #393939;
+  background-color: #191919;
   padding: 20px;
   border: 1px solid #ddd;
 `;

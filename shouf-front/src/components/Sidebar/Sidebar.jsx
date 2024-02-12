@@ -23,14 +23,8 @@ const Sidebar = ({ isOpen, onToggle }) => {
         <ComponentTree />
         </SidebarTreeBox>
       </div>
+      <SidebarButton onClick={onToggle}>{isOpen ? '<' : '>'}</SidebarButton>
 
-        <SidebarButton
-        
-          isOpen={isOpen}
-          onClick={onToggle}
-        >
-        {isOpen ? '<' : '>'}
-        </SidebarButton>
     </SidebarContainer>
   );
 };

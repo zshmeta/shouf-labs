@@ -11,7 +11,8 @@ import { listComponents } from '../src/list-components.js';
 
 async function startServer() {
   const app = new Koa();
-  app.use(cors());
+  app.use(cors({ origin: '*' }));
+  
   const router = new Router();
   const ports = [13001, 13002, 13003, 13004, 13005, 13006];
   const port = ports[0];

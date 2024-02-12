@@ -4,16 +4,8 @@ import { parse } from 'react-docgen';
 import { componentsPath, shoufPath } from './set-app-path.js'; 
 import { getAst } from './utils/docHandlers.js';
 
-/**
- * We first gather all the components in the components directory and then parse them using @babel/parser.
- * We then use react-docgen to parse the props of the components and generate the documentation.
- * We then write the documentation to a JSON file.
- * 
- * 
- * */
-
-  const shoufDir = shoufPath();
-  const componentJsonPath = path.join(shoufDir, 'components.json');
+const shoufDir = shoufPath();
+const componentJsonPath = path.join(shoufDir, 'components.json');
 
 const findComponents = () => {
   const componentsSRC = componentsPath();
@@ -54,13 +46,23 @@ const findComponents = () => {
 };
 
 const writeComponentList = (componentData) => {
-
   fs.writeFileSync(componentJsonPath, JSON.stringify(componentData, null, 2), 'utf8');
   console.log('Component documentation generated.');
   return componentJsonPath;
 };
 
-const componentData = findComponents();
-writeComponentList(componentData);
+const updateComponentList = () => {
+  const componentData = findComponents();
+  writeComponentList(componentData);
+};
+
+// Watch for changes in the components path
+fs.watch(componentsPath(), (eventType, filename) => {
+  console.log(`Change detected in ${filename}`);
+  updateComponentList();
+});
+
+// Initial generation of component list
+updateComponentList();
 
 export { findComponents, componentJsonPath };
