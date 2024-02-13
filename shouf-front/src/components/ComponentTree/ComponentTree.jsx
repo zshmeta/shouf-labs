@@ -7,7 +7,7 @@ import { useFetch } from '../../utils/useFetch'; // Ensure path is correct
 
 const ComponentTree = () => {
   const [reload, setReload] = useState(0);
-  const { data: components, loading, error } = useFetch('http://localhost:13001/api/componentsList');
+  const { data: components, loading, error } = useFetch('http://localhost:13001/api/componentsList',  reload);
     useEffect(() => {
     const ws = new WebSocket('ws://localhost:8080');
 
@@ -16,7 +16,7 @@ const ComponentTree = () => {
     };
 
     return () => {
-      ws.close();
+      ws.close(); 
     };
   }, []);
 
