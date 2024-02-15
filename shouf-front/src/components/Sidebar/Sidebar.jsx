@@ -13,6 +13,8 @@ const Sidebar = ({ isOpen, onToggle }) => {
 
   return (
     <SidebarContainer className="sidebar" sidebarOpen={isOpen}>
+      {isOpen && (
+        <>
       <div className="search-bar">
         <input type="text" placeholder="Search..." />
         <button>Search</button>
@@ -23,6 +25,8 @@ const Sidebar = ({ isOpen, onToggle }) => {
         <ComponentTree />
         </SidebarTreeBox>
       </div>
+      </>
+      )}
       <SidebarButton onClick={onToggle}>{isOpen ? '<' : '>'}</SidebarButton>
 
     </SidebarContainer>

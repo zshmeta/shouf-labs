@@ -1,5 +1,5 @@
 {
-  "name": "shouf-front",
+  "name": "shouffs",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,22 +7,15 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "docz": "docz dev",
-    "docz:build": "docz build",
-    "docz:serve": "docz build && docz serve"
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@babel/standalone": "^7.23.10",
-    "acorn": "^8.11.3",
-    "ast-to-markdown": "^1.0.0",
-    "debounce": "^2.0.0",
-    "escodegen": "^2.1.0",
-    "object-path": "^0.11.8",
+    "axios": "^1.6.7",
+    "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-live": "^4.1.6",
-    "styled-components": "^6.1.8"
+    "react-markdown": "^9.0.1",
+    "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",

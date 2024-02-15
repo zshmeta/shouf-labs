@@ -60,13 +60,10 @@ async function startServer() {
   });
   app.use(c2k(vite.middlewares));
   app.listen(availablePort);
-  console.log(`API running at http://localhost:${availablePort}/api/components`);
-  console.log(`Press Ctrl+C to stop the server`);
-}
+  console.log(`API running at http://localhost:${availablePort}/api/components`);}
 
 
 
 
 export { startServer };
 
-startServer();

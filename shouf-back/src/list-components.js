@@ -9,7 +9,10 @@ const listComponents = () => {
   try {
     const data = fs.readFileSync(componentJsonPath, 'utf8');
     const components = JSON.parse(data);
-    return components.map(component => component.name);
+    return components.map(component => ({
+      name: component.name,
+      path: component.path,
+    }));
   } catch (error) {
     console.error('Failed to read or parse component data:', error);
     return [];

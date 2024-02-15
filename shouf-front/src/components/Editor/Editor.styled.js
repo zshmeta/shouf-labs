@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const EditorWrapper = styled.div`
   margin-left: ${props => props.sidebarOpen ? '270px' : '0'};
-  transition: margin-left 0.5s ease-out;
+  transition: all 0.5s ease-out;
   margin-margin: 0;
   width: ${props => props.sidebarOpen ? 'calc(100% - 270px)' : '100%'};
   height: 100vh;
@@ -17,7 +17,7 @@ export const EditorPreview = styled.div`
   flex: 0.5;
   height: 70vh;
   width: 100%;
-  background-color: #fff;
+  background-color: #393939;
   border: 1px solid #021435;
 `;
 

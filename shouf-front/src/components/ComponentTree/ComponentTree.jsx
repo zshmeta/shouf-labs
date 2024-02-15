@@ -1,39 +1,40 @@
-import {useState, useEffect } from 'react';
-import { 
-  ComponentTreeRoot,
-  StyledList,
-   } from './ComponentTree.styled.js';
-import { useFetch } from '../../utils/useFetch'; // Ensure path is correct
+// ComponentTree.jsx
+import React from 'react';
+import { useFetch } from '../../utils/useFetch'; 
+import { useCurrentComponent } from '../../utils/useContext'
+import { ComponentTreeRoot, StyledList } from './ComponentTree.styled.js';
 
 const ComponentTree = () => {
-  const [reload, setReload] = useState(0);
-  const { data: components, loading, error } = useFetch('http://localhost:13001/api/componentsList',  reload);
-    useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8080');
+  const { loading, error, data: components } = useFetch('http://100.100.13.119:13001/api/componentsList');
 
-    ws.onmessage = () => {
-      setReload((prevReload) => prevReload + 1);
-    };
+    const { activeComponent, handleComponentClick } = useCurrentComponent();
 
-    return () => {
-      ws.close(); 
-    };
-  }, []);
 
-  if (loading) return <ComponentTreeRoot><p>Loading...</p></ComponentTreeRoot>;
-  if (error) return <ComponentTreeRoot><p>Error: {error.message}</p></ComponentTreeRoot>;
-  
+  if (loading) {
+    return <ComponentTreeRoot><p>Loading...</p></ComponentTreeRoot>;
+  }
+  if (error) {
+    return <ComponentTreeRoot><p>Error: {error.message}</p></ComponentTreeRoot>;
+  }
+
+
+
 
   return (
-          <ComponentTreeRoot>
-            <p>Shouf</p>
-             <p>Components</p>
-            <StyledList>
-              {components && components.map((componentName, index) => (
-                <li key={index}>{componentName}</li>
-              ))}
-            </StyledList>
-      
+    <ComponentTreeRoot>
+      <p>Shouf</p>
+      <StyledList>
+          {components.map((component) => (
+        <li key={component.name} 
+            onClick={() => handleComponentClick(component.name, component.path)}
+            style={{ 
+              backgroundColor: activeComponent === component.name ? 'lightblue' : 'transparent',
+              cursor: 'pointer'
+            }}>
+          {component.name}
+        </li>
+      ))}
+      </StyledList>
     </ComponentTreeRoot>
   );
 };

@@ -32,7 +32,8 @@ export const useFetch = (url, options, reload) => {
     };
 
     fetchData();
-  }, [url, reload, options]); // Re-fetch on URL or options change
+  }, [url, options]); // Re-fetch on URL or options change
 
   return { data, error, loading }; // Return states
 };
+

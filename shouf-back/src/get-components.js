@@ -32,6 +32,7 @@ const findComponents = () => {
             name: path.basename(item, path.extname(item)),
             props: parsed.props,
             ast: ast,
+            path: itemPath,
           });
         } catch (error) {
           console.error(`Error parsing component ${item}:`, error);

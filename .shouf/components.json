@@ -2243,7 +2243,8 @@
           }
         }
       ]
-    }
+    },
+    "path": "/root/shouf/src/components/Button/Button.jsx"
   },
   {
     "name": "Card",
@@ -3346,7 +3347,8 @@
         "directives": []
       },
       "comments": []
-    }
+    },
+    "path": "/root/shouf/src/components/Card/Card.jsx"
   },
   {
     "name": "Input",
@@ -5688,7 +5690,8 @@
         "directives": []
       },
       "comments": []
-    }
+    },
+    "path": "/root/shouf/src/components/Input/Input.jsx"
   },
   {
     "name": "Modal",
@@ -6963,6 +6966,7 @@
         "directives": []
       },
       "comments": []
-    }
+    },
+    "path": "/root/shouf/src/components/Modal/Modal.jsx"
   }
 ]
