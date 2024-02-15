@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import  { createEditor }  from './Playground'
 import debounce from 'debounce';
 import { CodeEditor, SplitView, CodePreview } from './SandBox.styled';
+import { useCurrentComponent } from '../../utils/useContext';
+
 
 
 const code = `import x from 'x';
@@ -12,7 +14,7 @@ function Greet() {
 }
 
 <Greet />
-`;
+`; 
 
 // eslint-disable-next-line react/prop-types
 const SandBox = ({sidebarOpen}) => {
@@ -20,7 +22,18 @@ const SandBox = ({sidebarOpen}) => {
   const editorRef = useRef(null);
   const elRef = useRef(null);
 
+  const { activeComponentCode } = useCurrentComponent();
+
+
   useEffect(() => {
+    console.log("Active component code changed:", activeComponentCode);
+ }, [activeComponentCode]);
+
+
+ 
+
+
+   useEffect(() => {
     editorRef.current = createEditor(elRef.current);
     editorRef.current.run(code);
   }, []);
@@ -40,10 +53,10 @@ const SandBox = ({sidebarOpen}) => {
 
   return (
       <SplitView sidebarOpen={sidebarOpen}>
+        <CodePreview ref={elRef} />
         <CodeEditor>
           <textarea value={codeState} onChange={onCodeChange} />
         </CodeEditor>
-        <CodePreview ref={elRef} />
       </SplitView>
   );
 };

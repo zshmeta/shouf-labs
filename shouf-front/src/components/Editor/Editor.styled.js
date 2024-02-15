@@ -5,8 +5,7 @@ export const EditorWrapper = styled.div`
   transition: all 0.5s ease-out;
   margin-margin: 0;
   width: ${props => props.sidebarOpen ? 'calc(100% - 270px)' : '100%'};
-  height: 100vh;
-  border: 1px solid #000;
+  height: max-content;
   display: flex;
   flex-direction: row;
   padding: 11px;
@@ -15,8 +14,9 @@ export const EditorWrapper = styled.div`
 
 export const EditorPreview = styled.div`
   flex: 0.5;
-  height: 70vh;
-  width: 100%;
+  height: max-content;
+  width: 100%;;
+  margin-top: 22%;
   background-color: #393939;
   border: 1px solid #021435;
 `;
@@ -24,9 +24,9 @@ export const EditorPreview = styled.div`
 export const EditorCode = styled.div`
   flex: 0.6;
   top: 0;
-  height: 50vh;
+  padding-right: 20px;
+  height: max-content;
   width: 100%;
-  border: 1px solid #021435;
 `;
 
 

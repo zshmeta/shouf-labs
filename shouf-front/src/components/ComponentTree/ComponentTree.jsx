@@ -16,10 +16,7 @@ const ComponentTree = () => {
   if (error) {
     return <ComponentTreeRoot><p>Error: {error.message}</p></ComponentTreeRoot>;
   }
-
-
-
-
+ 
   return (
     <ComponentTreeRoot>
       <p>Shouf</p>
