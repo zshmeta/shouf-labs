@@ -2244,7 +2244,8 @@
         }
       ]
     },
-    "path": "/root/shouf/src/components/Button/Button.jsx"
+    "path": "/home/zshmeta/Rezo2Gite/Rezo/rezo-ui/shouf-labs/src/components/Button/Button.jsx",
+    "code": "  import React, { useState } from 'react';\n  import { ButtonWrapper } from './Button.styled';\n\n  const Button = ({ ...props }) => {\n    const [count, setCount] = useState(0);\n    const [isDisabled, setIsDisabled] = useState(false);\n\n    const handleClick = () => {\n      // Handle click events or other interactions here\n      setCount(count + 1);\n    };\n\n    const handleDisable = () => {\n      setIsDisabled(!isDisabled);\n    };\n\n    return (\n      <ButtonWrapper\n        className={styles.Button}\n        onClick={handleClick}\n        disabled={isDisabled}\n        {...props}\n      >\n        {isDisabled ? 'Disabled' : 'Click Me'}\n        <span>Count: {count}</span>\n        <button onClick={handleDisable}>\n          {isDisabled ? 'Enable' : 'Disable'}\n        </button>\n      </ButtonWrapper>\n    );\n  };\n\n  export default Button;\n"
   },
   {
     "name": "Card",
@@ -3348,7 +3349,8 @@
       },
       "comments": []
     },
-    "path": "/root/shouf/src/components/Card/Card.jsx"
+    "path": "/home/zshmeta/Rezo2Gite/Rezo/rezo-ui/shouf-labs/src/components/Card/Card.jsx",
+    "code": "import React from 'react';\n\nconst Card = () => {\n  return (\n    <div className=\"card\">\n      <img src=\"card-image.jpg\" alt=\"Card Image\" />\n      <div className=\"card-content\">\n        <h2>Card Title</h2>\n        <p>Card description goes here</p>\n      </div>\n    </div>\n  );\n};\n\nexport default Card;\n"
   },
   {
     "name": "Input",
@@ -5691,7 +5693,8 @@
       },
       "comments": []
     },
-    "path": "/root/shouf/src/components/Input/Input.jsx"
+    "path": "/home/zshmeta/Rezo2Gite/Rezo/rezo-ui/shouf-labs/src/components/Input/Input.jsx",
+    "code": "import React, { useState } from 'react';\n\nconst Input = () => {\n  const [value, setValue] = useState('');\n  const [isValid, setIsValid] = useState(true);\n  const [isActivated, setIsActivated] = useState(false);\n\n  const handleChange = (e) => {\n    setValue(e.target.value);\n    setIsValid(e.target.value !== '');\n  };\n\n  const handleActivate = () => {\n    setIsActivated(true);\n  };\n\n  return (\n    <div>\n      <input\n        type=\"text\"\n        value={value}\n        onChange={handleChange}\n        disabled={!isActivated}\n      />\n      {!isValid && isActivated && <p>Please enter a valid value</p>}\n      <button onClick={handleActivate}>Activate</button>\n    </div>\n  );\n};\n\nexport default Input;\n"
   },
   {
     "name": "Modal",
@@ -6967,6 +6970,7 @@
       },
       "comments": []
     },
-    "path": "/root/shouf/src/components/Modal/Modal.jsx"
+    "path": "/home/zshmeta/Rezo2Gite/Rezo/rezo-ui/shouf-labs/src/components/Modal/Modal.jsx",
+    "code": "import React from 'react';\n\nconst Modal = ({ isOpen, onClose, children }) => {\n  if (!isOpen) {\n    return null;\n  }\n\n  return (\n    <div className=\"modal\">\n      <div className=\"modal-content\">\n        {children}\n      </div>\n      <button className=\"modal-close\" onClick={onClose}>\n        Close\n      </button>\n    </div>\n  );\n};\n\nexport default Modal;\n"
   }
 ]

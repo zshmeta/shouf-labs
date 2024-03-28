@@ -9,5 +9,4 @@ const server = async () => {
     }
 }
 
-
-export { server }
+server();

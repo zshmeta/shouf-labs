@@ -11,35 +11,46 @@ const findComponents = () => {
   const componentsSRC = componentsPath();
   const componentData = [];
 
-  const scanDirectory = (directory) => {
-    const items = fs.readdirSync(directory);
-    items.forEach((item) => {
-      const itemPath = path.join(directory, item);
-      const stat = fs.statSync(itemPath);
+const scanDirectory = (directory) => {
+  const items = fs.readdirSync(directory);
+  items.forEach((item) => {
+    const itemPath = path.join(directory, item);
+    const stat = fs.statSync(itemPath);
 
-      if (stat.isDirectory()) {
-        scanDirectory(itemPath);
-      } else if (stat.isFile() && ['.jsx'].includes(path.extname(item))) {
+    if (stat.isDirectory()) {
+      scanDirectory(itemPath);
+    } else if (stat.isFile()) {
+      const extname = path.extname(item);
+      if (['.jsx', '.styled.js', '.css'].includes(extname)) {
         const content = fs.readFileSync(itemPath, 'utf8');
         try {
-          const ast = getAst(content, itemPath);
-          console.log('AST:', ast);
+          if (extname === '.jsx') {
+            const ast = getAst(content, itemPath);
+            console.log('AST:', ast);
 
-          // Assuming the parse function returns an object with a props property
-          const parsed = parse(content);
+            const parsed = parse(content);
 
-          componentData.push({
-            name: path.basename(item, path.extname(item)),
-            props: parsed.props,
-            ast: ast,
-            path: itemPath,
-          });
+            componentData.push({
+              name: path.basename(item, path.extname(item)),
+              props: parsed.props,
+              ast: ast,
+              path: itemPath,
+              code: content,
+            });
+          } else {
+            // adding the styled files to the arrau
+            const lastComponent = componentData[componentData.length - 1];
+            if (lastComponent && lastComponent.name === path.basename(item, extname)) {
+              lastComponent[extname === '.styled.js' ? 'styledJsCode' : 'cssCode'] = content;
+            }
+          }
         } catch (error) {
           console.error(`Error parsing component ${item}:`, error);
         }
       }
-    });
-  };
+    }
+  });
+};
 
   scanDirectory(componentsSRC);
 
