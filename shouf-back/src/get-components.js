@@ -10,9 +10,15 @@ const componentJsonPath = path.join(shoufDir, 'components.json');
 const findComponents = () => {
   const componentsSRC = componentsPath();
   const componentData = [];
-
 const scanDirectory = (directory) => {
   const items = fs.readdirSync(directory);
+  const componentData = {
+    jsx: null,
+    styledJs: null,
+    css: null,
+    otherFiles: [],
+  };
+
   items.forEach((item) => {
     const itemPath = path.join(directory, item);
     const stat = fs.statSync(itemPath);
@@ -20,38 +26,51 @@ const scanDirectory = (directory) => {
     if (stat.isDirectory()) {
       scanDirectory(itemPath);
     } else if (stat.isFile()) {
+      const content = fs.readFileSync(itemPath, 'utf8');
       const extname = path.extname(item);
-      if (['.jsx', '.styled.js', '.css'].includes(extname)) {
-        const content = fs.readFileSync(itemPath, 'utf8');
+
+      if (extname === '.jsx') {
         try {
-          if (extname === '.jsx') {
-            const ast = getAst(content, itemPath);
-            console.log('AST:', ast);
+          const ast = getAst(content, itemPath);
+          console.log('AST:', ast);
 
-            const parsed = parse(content);
+          // Assuming the parse function returns an object with a props property
+          const parsed = parse(content);
 
-            componentData.push({
-              name: path.basename(item, path.extname(item)),
-              props: parsed.props,
-              ast: ast,
-              path: itemPath,
-              code: content,
-            });
-          } else {
-            // adding the styled files to the arrau
-            const lastComponent = componentData[componentData.length - 1];
-            if (lastComponent && lastComponent.name === path.basename(item, extname)) {
-              lastComponent[extname === '.styled.js' ? 'styledJsCode' : 'cssCode'] = content;
-            }
-          }
+          componentData.jsx = {
+            name: path.basename(item, extname),
+            props: parsed.props,
+            ast: ast,
+            path: itemPath,
+            code: content,
+          };
         } catch (error) {
           console.error(`Error parsing component ${item}:`, error);
         }
+      } else if (extname === '.styled.js') {
+        componentData.styledJs = {
+          name: path.basename(item, extname),
+          path: itemPath,
+          code: content,
+        };
+      } else if (extname === '.css') {
+        componentData.css = {
+          name: path.basename(item, extname),
+          path: itemPath,
+          code: content,
+        };
+      } else {
+        componentData.otherFiles.push({
+          name: path.basename(item, extname),
+          path: itemPath,
+          code: content,
+        });
       }
     }
   });
-};
 
+  return componentData;
+};
   scanDirectory(componentsSRC);
 
   return componentData;
