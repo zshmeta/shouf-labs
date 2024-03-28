@@ -7,7 +7,6 @@ import { createServer as createViteServer } from 'vite';
 import c2k from 'koa-connect';
 import { findComponents, componentJsonPath } from '../src/get-components.js'; 
 import { listComponents } from '../src/list-components.js';
-let componentData 
 
 async function startServer() {
   const app = new Koa();
@@ -28,16 +27,16 @@ async function startServer() {
     }
   });
 
-  router.get('/api/updateComponents', async (ctx) => {
-    try {
-      componentData = findComponents();
-      fs.writeFileSync(componentJsonPath, JSON.stringify(componentData, null, 2), 'utf8');
-      ctx.body = { message: 'Component documentation updated.' };
-    } catch (err) {
-      ctx.status = 500;
-      ctx.body = { error: "Failed to update component documentation." };
-    }
-  });
+  // router.post('/api/updateComponents', async (ctx) => {
+  //   try {
+  //     const componentData = findComponents();
+  //     fs.writeFileSync(componentJsonPath, JSON.stringify(componentData, null, 2), 'utf8');
+  //     ctx.body = { message: 'Component documentation updated.' };
+  //   } catch (err) {
+  //     ctx.status = 500;
+  //     ctx.body = { error: "Failed to update component documentation." };
+  //   }
+  // });
 
 
   router.get('/api/componentsList', async (ctx) => {
@@ -71,8 +70,9 @@ async function startServer() {
     server: { middlewareMode: 'koa' },
   });
   app.use(c2k(vite.middlewares));
-  app.listen(availablePort);
-  
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});  
   console.log(`API running at http://localhost:${availablePort}/api/components`);}
 
 

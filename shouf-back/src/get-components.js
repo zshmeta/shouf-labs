@@ -4,87 +4,110 @@ import { parse } from 'react-docgen';
 import { componentsPath, shoufPath } from './set-app-path.js'; 
 import { getAst } from './utils/docHandlers.js';
 
+// Define the directory for the output JSON file
 const shoufDir = shoufPath();
 const componentJsonPath = path.join(shoufDir, 'components.json');
 
+// Function to find and parse components
 const findComponents = () => {
   const componentsSRC = componentsPath();
-  const componentData = [];
-const scanDirectory = (directory) => {
-  const items = fs.readdirSync(directory);
-  const componentData = {
-    jsx: null,
-    styledJs: null,
-    css: null,
-    otherFiles: [],
+  const components = []; // This will hold all our component data
+
+  const scanDirectory = (directory) => {
+    const items = fs.readdirSync(directory);
+
+    items.forEach((item) => {
+      const itemPath = path.join(directory, item);
+      const stat = fs.statSync(itemPath);
+
+      // If the item is a directory, it's a component
+      if (stat.isDirectory()) {
+        const subItems = fs.readdirSync(itemPath);
+        const componentData = {
+          jsx: null,
+          styledJs: null,
+          css: null,
+          md: null,
+          otherFiles: [],
+        };
+
+        // Loop through the files in the component directory
+        subItems.forEach((subItem) => {
+          const subItemPath = path.join(itemPath, subItem);
+          const subStat = fs.statSync(subItemPath);
+
+          if (subStat.isFile()) {
+            const content = fs.readFileSync(subItemPath, 'utf8');
+            const extname = path.extname(subItem);
+
+            // Parse the different file types
+            if (extname === '.jsx') {
+              try {
+                const ast = getAst(content, subItemPath);
+                const parsed = parse(content);
+
+                componentData.jsx = {
+                  name: path.basename(subItem, extname),
+                  props: parsed.props,
+                  ast: ast,
+                  path: subItemPath,
+                  code: content,
+                };
+              } catch (error) {
+                console.error(`Error parsing component ${subItem}:`, error);
+              }
+            } else if (extname === '.styled.js') {
+              componentData.styledJs = {
+                name: path.basename(subItem, extname),
+                path: subItemPath,
+                code: content,
+              };
+            } else if (extname === '.css') {
+              componentData.css = {
+                name: path.basename(subItem, extname),
+                path: subItemPath,
+                code: content,
+              };
+            } else if (extname === '.md' || extname === '.mdx') {
+              componentData.md = {
+                name: path.basename(subItem, extname),
+                path: subItemPath,
+                code: content,
+              };
+            } else {
+              componentData.otherFiles.push({
+                name: path.basename(subItem, extname),
+                path: subItemPath,
+                code: content,
+              });
+            }
+          }
+        });
+
+        // Add the component data to the components array
+        components.push(componentData);
+      }
+    });
   };
 
-  items.forEach((item) => {
-    const itemPath = path.join(directory, item);
-    const stat = fs.statSync(itemPath);
-
-    if (stat.isDirectory()) {
-      scanDirectory(itemPath);
-    } else if (stat.isFile()) {
-      const content = fs.readFileSync(itemPath, 'utf8');
-      const extname = path.extname(item);
-
-      if (extname === '.jsx') {
-        try {
-          const ast = getAst(content, itemPath);
-          console.log('AST:', ast);
-
-          // Assuming the parse function returns an object with a props property
-          const parsed = parse(content);
-
-          componentData.jsx = {
-            name: path.basename(item, extname),
-            props: parsed.props,
-            ast: ast,
-            path: itemPath,
-            code: content,
-          };
-        } catch (error) {
-          console.error(`Error parsing component ${item}:`, error);
-        }
-      } else if (extname === '.styled.js') {
-        componentData.styledJs = {
-          name: path.basename(item, extname),
-          path: itemPath,
-          code: content,
-        };
-      } else if (extname === '.css') {
-        componentData.css = {
-          name: path.basename(item, extname),
-          path: itemPath,
-          code: content,
-        };
-      } else {
-        componentData.otherFiles.push({
-          name: path.basename(item, extname),
-          path: itemPath,
-          code: content,
-        });
-      }
-    }
-  });
-
-  return componentData;
-};
+  // Start scanning from the components source directory
   scanDirectory(componentsSRC);
 
-  return componentData;
+  // Return the array of component data
+  return components;
 };
 
-const writeComponentList = (componentData) => {
-  fs.writeFileSync(componentJsonPath, JSON.stringify(componentData, null, 2), 'utf8');
+// Function to write the component data to a JSON file
+const writeComponentList = (components) => {
+  fs.writeFileSync(componentJsonPath, JSON.stringify(components, null, 2), 'utf8');
   console.log('Component documentation generated.');
   return componentJsonPath;
 };
 
+// Function to update the component list
 const updateComponentList = () => {
-  const componentData = findComponents();
-  writeComponentList(componentData);
+  const components = findComponents();
+  writeComponentList(components);
 };
 
 // Watch for changes in the components path
