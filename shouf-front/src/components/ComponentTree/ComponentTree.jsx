@@ -1,14 +1,12 @@
-// ComponentTree.jsx
+// Import necessary React and utility functions
 import React from 'react';
 import { useFetch } from '../../utils/useFetch'; 
 import { useCurrentComponent } from '../../utils/useContext'
 import { ComponentTreeRoot, StyledList } from './ComponentTree.styled.js';
 
 const ComponentTree = () => {
-  const { loading, error, data: components } = useFetch('http://100.100.13.119:13001/api/componentsList');
-
-    const { activeComponent, handleComponentClick } = useCurrentComponent();
-
+  const { loading, error, data: components } = useFetch('http://100.100.13.119:13001/api/components');
+  const { activeComponent, handleComponentClick } = useCurrentComponent();
 
   if (loading) {
     return <ComponentTreeRoot><p>Loading...</p></ComponentTreeRoot>;
@@ -16,24 +14,30 @@ const ComponentTree = () => {
   if (error) {
     return <ComponentTreeRoot><p>Error: {error.message}</p></ComponentTreeRoot>;
   }
- 
+
   return (
     <ComponentTreeRoot>
-      <p>Shouf</p>
       <StyledList>
-          {components.map((component) => (
-        <li key={component.name} 
-            onClick={() => handleComponentClick(component.name, component.path)}
-            style={{ 
-              backgroundColor: activeComponent === component.name ? 'lightblue' : 'transparent',
-              cursor: 'pointer'
-            }}>
-          {component.name}
-        </li>
-      ))}
+        {components.map((component, index) => {
+          const otherFileName = component.otherFiles[0].name.split('.')[0];
+          const isUnreadeable = component.jsx ? false : true;
+          const jsxName = component.jsx ? component.jsx.name : otherFileName ? `${otherFileName} : jsx unreadeable` : "";
+          const jsxPath = component.jsx ? component.jsx.path : undefined;
+
+          const nameStyle = isUnreadeable ? { color: '#FF0000', fontSize: '17px' } : {};  
+
+          return (
+            <li key={index} onClick={() => handleComponentClick(jsxName, jsxPath)} className={activeComponent === jsxName ? 'active' : ''} style={nameStyle}>
+              <span>
+              {jsxName}
+              </span>
+            </li>
+          );
+        })}
       </StyledList>
     </ComponentTreeRoot>
   );
-};
+}
+
 
 export default ComponentTree;

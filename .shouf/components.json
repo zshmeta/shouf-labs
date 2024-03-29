@@ -3405,6 +3405,33 @@
     ]
   },
   {
+    "jsx": null,
+    "styledJs": null,
+    "css": null,
+    "md": {
+      "name": "CheckBox.Readme",
+      "path": "/root/shouf/src/components/CheckBox/CheckBox.Readme.md",
+      "code": "\n    # CheckBox\n    \n    *by zshmeta*\n    \n    **CheckBox.README - A Quick Overview**\n    \n    ### What is this\n    \n    (TODO: Write a brief description of the compo.)\n    \n    ## Why is This?\n    \n    (TODO: Explain why this compo exists or its purpose in your project.)\n    \n    ## How is this?\n    \n    (TODO: Describe how to use this compo or any relevant information about its implementation.)\n    \n    #### A Word from the dev...\n    \n    (TODO: Any personal notes from the developer about this compo.)\n    \n    Special thanks goes to me, zshmeta. All rights reserved.\n      "
+    },
+    "otherFiles": [
+      {
+        "name": "CheckBox.scoped",
+        "path": "/root/shouf/src/components/CheckBox/CheckBox.scoped.scss",
+        "code": "\n.CheckBox {\n  display: block;\n  padding: 10px;\n  color: #fff;\n  background-color: #000;\n}\n"
+      },
+      {
+        "name": "CheckBox.test",
+        "path": "/root/shouf/src/components/CheckBox/CheckBox.test.js",
+        "code": "\"// Import necessary functions from the testing library\nimport { render, screen } from '@testing-library/react';\n\n// Import the component you want to test\nimport CheckBox from './CheckBox';\n\n// Group related tests using the describe function\ndescribe('CheckBox Component', () => {\n  // Test case: Check if the CompoName component renders correctly\n  it('renders CheckBox Component', async () => {\n    // Render the CheckBox Component\n    render(<CheckBox />);\n\n    // Check if the element is in the document\n    expect(CheckBoxElement).toBeInTheDocument();\n  });\n\n  // Test case: Check if a specific CSS class is applied to an element\n  it('applies the correct CSS class to an element', async () => {\n    // Render the CheckBox Component\n    render(<CheckBox />);\n\n    // Find the element with the specified CSS class\n    const cssClassElement = await screen.findByTestId('element-with-css-class');\n\n    // Check if the element has the expected CSS class\n    expect(cssClassElement).toHaveClass('expected-css-class');\n  });\n\n  // Test case: Renders without crashing\n  test('renders without crashing', () => {\n    render(<CheckBox />);\n  });\n\n  // Test case: Matches snapshot\n  test('matches snapshot', () => {\n    const { asFragment } = render(<CheckBox />);\n    expect(asFragment()).toMatchSnapshot();\n  });\n\n  // Additional generic test case\n  test('generic test case', () => {\n    // Add your generic test implementation here\n  });\n});"
+      },
+      {
+        "name": "index",
+        "path": "/root/shouf/src/components/CheckBox/index.js",
+        "code": "\n      export { default } from './CheckBox';\n      "
+      }
+    ]
+  },
+  {
     "jsx": {
       "name": "Input",
       "ast": {
@@ -7074,6 +7101,33 @@
         "name": "index",
         "path": "/root/shouf/src/components/Modal/index.js",
         "code": "\n      export { default } from './Modal';\n      "
+      }
+    ]
+  },
+  {
+    "jsx": null,
+    "styledJs": null,
+    "css": null,
+    "md": {
+      "name": "Readio.Readme",
+      "path": "/root/shouf/src/components/Radio/Readio.Readme.md",
+      "code": "\n    # Readio\n    \n    *by zshmeta*\n    \n    **Readio.README - A Quick Overview**\n    \n    ### What is this\n    \n    (TODO: Write a brief description of the compo.)\n    \n    ## Why is This?\n    \n    (TODO: Explain why this compo exists or its purpose in your project.)\n    \n    ## How is this?\n    \n    (TODO: Describe how to use this compo or any relevant information about its implementation.)\n    \n    #### A Word from the dev...\n    \n    (TODO: Any personal notes from the developer about this compo.)\n    \n    Special thanks goes to me, zshmeta. All rights reserved.\n      "
+    },
+    "otherFiles": [
+      {
+        "name": "Readio.scoped",
+        "path": "/root/shouf/src/components/Radio/Readio.scoped.scss",
+        "code": "\n.Readio {\n  display: block;\n  padding: 10px;\n  color: #fff;\n  background-color: #000;\n}\n"
+      },
+      {
+        "name": "Readio.test",
+        "path": "/root/shouf/src/components/Radio/Readio.test.js",
+        "code": "\"// Import necessary functions from the testing library\nimport { render, screen } from '@testing-library/react';\n\n// Import the component you want to test\nimport Readio from './Readio';\n\n// Group related tests using the describe function\ndescribe('Readio Component', () => {\n  // Test case: Check if the CompoName component renders correctly\n  it('renders Readio Component', async () => {\n    // Render the Readio Component\n    render(<Readio />);\n\n    // Check if the element is in the document\n    expect(ReadioElement).toBeInTheDocument();\n  });\n\n  // Test case: Check if a specific CSS class is applied to an element\n  it('applies the correct CSS class to an element', async () => {\n    // Render the Readio Component\n    render(<Readio />);\n\n    // Find the element with the specified CSS class\n    const cssClassElement = await screen.findByTestId('element-with-css-class');\n\n    // Check if the element has the expected CSS class\n    expect(cssClassElement).toHaveClass('expected-css-class');\n  });\n\n  // Test case: Renders without crashing\n  test('renders without crashing', () => {\n    render(<Readio />);\n  });\n\n  // Test case: Matches snapshot\n  test('matches snapshot', () => {\n    const { asFragment } = render(<Readio />);\n    expect(asFragment()).toMatchSnapshot();\n  });\n\n  // Additional generic test case\n  test('generic test case', () => {\n    // Add your generic test implementation here\n  });\n});"
+      },
+      {
+        "name": "index",
+        "path": "/root/shouf/src/components/Radio/index.js",
+        "code": "\n      export { default } from './Readio';\n      "
       }
     ]
   }

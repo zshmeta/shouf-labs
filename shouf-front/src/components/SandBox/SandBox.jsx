@@ -52,7 +52,7 @@ const SandBox = ({sidebarOpen}) => {
 
 
   return (
-      <SplitView sidebarOpen={sidebarOpen}>
+      <SplitView $sidebarOpen={sidebarOpen}>
         <CodePreview ref={elRef} />
         <CodeEditor>
           <textarea value={codeState} onChange={onCodeChange} />

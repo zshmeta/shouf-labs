@@ -1,24 +1,24 @@
-// Import necessary functions from the testing library
+"// Import necessary functions from the testing library
 import { render, screen } from '@testing-library/react';
 
 // Import the component you want to test
-import Treelist from './Treelist';
+import Readio from './Readio';
 
 // Group related tests using the describe function
-describe('Treelist Component', () => {
+describe('Readio Component', () => {
   // Test case: Check if the CompoName component renders correctly
-  it('renders Treelist Component', async () => {
-    // Render the Treelist Component
-    render(<Treelist />);
+  it('renders Readio Component', async () => {
+    // Render the Readio Component
+    render(<Readio />);
 
     // Check if the element is in the document
-    expect(TreelistElement).toBeInTheDocument();
+    expect(ReadioElement).toBeInTheDocument();
   });
 
   // Test case: Check if a specific CSS class is applied to an element
   it('applies the correct CSS class to an element', async () => {
-    // Render the Treelist Component
-    render(<Treelist />);
+    // Render the Readio Component
+    render(<Readio />);
 
     // Find the element with the specified CSS class
     const cssClassElement = await screen.findByTestId('element-with-css-class');
@@ -29,12 +29,12 @@ describe('Treelist Component', () => {
 
   // Test case: Renders without crashing
   test('renders without crashing', () => {
-    render(<Treelist />);
+    render(<Readio />);
   });
 
   // Test case: Matches snapshot
   test('matches snapshot', () => {
-    const { asFragment } = render(<Treelist />);
+    const { asFragment } = render(<Readio />);
     expect(asFragment()).toMatchSnapshot();
   });
 

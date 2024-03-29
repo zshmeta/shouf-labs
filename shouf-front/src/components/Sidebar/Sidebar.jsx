@@ -12,7 +12,7 @@ import {
 const Sidebar = ({ isOpen, onToggle }) => {
 
   return (
-    <SidebarContainer className="sidebar" sidebarOpen={isOpen}>
+    <SidebarContainer className="sidebar" $sidebarOpen={isOpen}>
       {isOpen && (
         <>
       <div className="search-bar">

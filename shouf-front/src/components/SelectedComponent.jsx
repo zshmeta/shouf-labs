@@ -8,19 +8,19 @@ const SelectedComponentProvider = ({ children }) => {
   const [activeComponent, setActiveComponent] = useState(null);
   const [activeComponentCode, setActiveComponentCode] = useState('');
 
-  const handleComponentClick = (name, path) => {
-    setActiveComponent(name);
-    fs.readFile(path, 'utf8', (err, data) => {
-      if (err) {
-        console.error(err);
-        setActiveComponentCode('// Error fetching component code');
-      } else {
-        setActiveComponentCode();
-        console.log('Received data for component:', name);
-        console.log('Received Path:', path);
-      }
-    });
-  };
+  // const handleComponentClick = (name, path) => {
+  //   setActiveComponent(name);
+  //   fs.readFile(path, 'utf8', (err, data) => {
+  //     if (err) {
+  //       console.error(err);
+  //       setActiveComponentCode('// Error fetching component code');
+  //     } else {
+  //       setActiveComponentCode();
+  //       console.log('Received data for component:', name);
+  //       console.log('Received Path:', path);
+  //     }
+  //   });
+  // };
 
   console.log('Active Component:', activeComponent);
   console.log('Active Component Code:', activeComponentCode);
@@ -28,7 +28,7 @@ const SelectedComponentProvider = ({ children }) => {
   const value = {
     activeComponent,
     activeComponentCode,
-    handleComponentClick,
+    // handleComponentClick,
   };
 
   return (

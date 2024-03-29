@@ -32,7 +32,7 @@ const Editor = ({ sidebarOpen }) => {
 `;
 
   return (
-    <EditorWrapper sidebarOpen={sidebarOpen}>
+    <EditorWrapper $sidebarOpen={sidebarOpen}>
       <LiveProvider code={codeToRender} scope={{ useState }}>
         <EditorCode>
           <h3>Code</h3>

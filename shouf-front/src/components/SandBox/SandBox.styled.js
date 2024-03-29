@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const SplitView = styled.div`
-    margin-left: ${props => props.sidebarOpen ? '260px' : '0'};
+    margin-left: ${props => props.$sidebarOpen ? '260px' : '0'};
     transition: all 0.5s ease-out;
 
-    width: ${props => props.sidebarOpen ? 'calc(100% - 270px)' : '100%'};
+    width: ${props => props.$sidebarOpen ? 'calc(100% - 270px)' : '100%'};
     height: 80vh;
     display: flex;
     flex-direction: column;
