@@ -20,9 +20,9 @@ const getAppRoot = () => {
 
 const componentsPath = () => path.join(getAppRoot(), 'src/components'); 
 
-const shoufPath = () => path.join(getAppRoot(), '.shouf');
-if (!fs.existsSync(shoufPath())) {
-  fs.mkdirSync(shoufPath());
-}
+// const shoufPath = () => path.join(getAppRoot(), '.shouf');
+// if (!fs.existsSync(shoufPath())) {
+//   fs.mkdirSync(shoufPath());
+// }
 
 export { shoufPath, componentsPath };

@@ -51,3 +51,44 @@ export const SidebarButton = styled.button`
   border: 1px solid cyan;
   border-radius: 0% 30% 30% 0;
 `;
+
+
+
+ export const SidebarRefreshButton = styled.button`
+ position: absolute;
+  background-color: #FF9900;
+  border-radius: 50%;
+  width: 1px;
+  height: 1px;
+  transition: width 0.5s, height 0.5s;
+  &:hover {
+  width: 10px;
+  height: 20px;
+}
+  & active {
+  animation: fill 2s forwards;
+  }
+
+@keyframes fill {
+  0% {
+    background-color: #FF9900;
+  }
+  100% {
+    background-color: #f00;
+  }
+}
+  `;
+
+  export const SidebarNotification = styled.div`
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+
+  `;

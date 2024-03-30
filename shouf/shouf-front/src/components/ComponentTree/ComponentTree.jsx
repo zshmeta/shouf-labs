@@ -24,7 +24,7 @@ const ComponentTree = () => {
           const jsxName = component.jsx ? component.jsx.name : otherFileName ? `${otherFileName} : jsx unreadeable` : "";
           const jsxPath = component.jsx ? component.jsx.path : undefined;
 
-          const nameStyle = isUnreadeable ? { color: '#FF0000', fontSize: '17px' } : {};  
+          const nameStyle = isUnreadeable ? { color: '#FF0000', fontSize: '17px' , pointer: 'none'} : {};  
 
           return (
             <li key={index} onClick={() => handleComponentClick(jsxName, jsxPath)} className={activeComponent === jsxName ? 'active' : ''} style={nameStyle}>

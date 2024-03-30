@@ -1,12 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 import { parse } from 'react-docgen';
-import { componentsPath, shoufPath } from './set-app-path.js'; 
+import { componentsPath } from '../bin/shouf.js'; 
 import { getAst } from './utils/docHandlers.js';
 
-// Define the directory for the output JSON file
-const shoufDir = shoufPath();
-const componentJsonPath = path.join(shoufDir, 'components.json');
+// // Define the directory for the output JSON file
+// const shoufDir = shoufPath();
+// const componentJsonPath = path.join(shoufDir, 'components.json');
 
 // Function to find and parse components
 const findComponents = () => {
@@ -97,17 +97,17 @@ const findComponents = () => {
   return components;
 };
 
-// Function to write the component data to a JSON file
-const writeComponentList = (components) => {
-  fs.writeFileSync(componentJsonPath, JSON.stringify(components, null, 2), 'utf8');
-  console.log('Component documentation generated.');
-  return componentJsonPath;
-};
+// // Function to write the component data to a JSON file
+// const writeComponentList = (components) => {
+//   fs.writeFileSync(componentJsonPath, JSON.stringify(components, null, 2), 'utf8');
+//   console.log('Component documentation generated.');
+//   return componentJsonPath;
+// };
 
 // Function to update the component list
 const updateComponentList = () => {
   const components = findComponents();
-  writeComponentList(components);
+  // writeComponentList(components);
 };
 
 // Watch for changes in the components path
@@ -119,4 +119,4 @@ fs.watch(componentsPath(), (eventType, filename) => {
 // Initial generation of component list
 updateComponentList();
 
-export { findComponents, componentJsonPath };
+export { findComponents, components };

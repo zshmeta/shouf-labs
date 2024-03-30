@@ -5,8 +5,8 @@ import Router from '@koa/router';
 import fs from 'fs';
 import { createServer as createViteServer } from 'vite';
 import c2k from 'koa-connect';
-import { findComponents, componentJsonPath } from '../src/get-components.js'; 
-import { listComponents } from '../src/list-components.js';
+import { findComponents } from '../src/get-components.js'; 
+// import { listComponents } from '../src/list-components.js';
 
 async function startServer() {
   const app = new Koa();
@@ -27,22 +27,39 @@ async function startServer() {
     }
   });
 
-  // router.post('/api/updateComponents', async (ctx) => {
-  //   try {
-  //     const componentData = findComponents();
-  //     fs.writeFileSync(componentJsonPath, JSON.stringify(componentData, null, 2), 'utf8');
-  //     ctx.body = { message: 'Component documentation updated.' };
-  //   } catch (err) {
-  //     ctx.status = 500;
-  //     ctx.body = { error: "Failed to update component documentation." };
-  //   }
+router.post('/api/updateComponents', async (ctx) => {
+  try {
+    // Get the list of components before the update
+    const oldComponentsList = listComponents();
+
+    // Update the components
+    const componentData = findComponents();
+    fs.writeFileSync(componentJsonPath, JSON.stringify(componentData, null, 2), 'utf8');
+
+    // Refresh the server
+    server.close();
+    server = await startServer();
+
+    // Get the list of components after the update
+    const newComponentsList = listComponents();
+
+    // Find the new components
+    const addedComponents = newComponentsList.filter(component => !oldComponentsList.includes(component));
+
+    // Serve the new components in the response
+    ctx.type = 'application/json';
+    ctx.body = addedComponents;
+  } catch (err) {
+    ctx.status = 500;
+    ctx.body = { error: "Failed to update component documentation." };
+  }
+});
+
+
+  // router.get('/api/componentsList', async (ctx) => {
+  //   const componentsList = listComponents();
+  //   ctx.body = componentsList;
   // });
-
-
-  router.get('/api/componentsList', async (ctx) => {
-    const componentsList = listComponents();
-    ctx.body = componentsList;
-  });
 
 
   app.use(router.routes()).use(router.allowedMethods());
