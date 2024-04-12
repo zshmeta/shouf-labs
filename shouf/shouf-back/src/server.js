@@ -5,7 +5,7 @@ import Router from '@koa/router';
 import fs from 'fs';
 import { createServer as createViteServer } from 'vite';
 import c2k from 'koa-connect';
-import { findComponents } from '../src/get-components.js'; 
+import { findComponents, componentJsonPath, updateComponentList } from './get-components.js';
 // import { listComponents } from '../src/list-components.js';
 
 async function startServer() {
@@ -18,6 +18,7 @@ async function startServer() {
 
   router.get('/api/components', async (ctx) => {
     try {
+      updateComponentList();
       const data = fs.readFileSync(componentJsonPath, 'utf8');
       ctx.type = 'application/json';
       ctx.body = JSON.parse(data);
@@ -56,43 +57,45 @@ router.post('/api/updateComponents', async (ctx) => {
 });
 
 
-  // router.get('/api/componentsList', async (ctx) => {
-  //   const componentsList = listComponents();
-  //   ctx.body = componentsList;
-  // });
+  router.get('/api/componentsList', async (ctx) => {
+    const componentsList = listComponents();
+    ctx.body = componentsList;
+  });
 
 
   app.use(router.routes()).use(router.allowedMethods());
 
   const findAvailablePort = async (ports) => {
     for (const port of ports) {
-      const isAvailable = await new Promise((resolve) => {
-        const server = app.listen(port, () => {
-          server.close();
-          resolve(true);
+      try {
+        await new Promise((resolve, reject) => {
+          const server = app.listen(port, () => {
+            server.close(resolve);
+          }).on('error', reject);
         });
-        server.on('error', () => {
-          resolve(false);
-        });
-      });
-      if (isAvailable) {
-        return port;
+        return port;  // This port is available
+      } catch (error) {
+        continue;  // This port is not available, check the next one
       }
     }
     throw new Error('No available ports');
   }
 
-  const availablePort = await findAvailablePort(ports);
-  const vite = await createViteServer({
-    server: { middlewareMode: 'koa' },
-  });
-  app.use(c2k(vite.middlewares));
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
-});  
-  console.log(`API running at http://localhost:${availablePort}/api/components`);}
+  try {
+    const availablePort = await findAvailablePort(ports);
+    const vite = await createViteServer({
+      server: { middlewareMode: 'koa' },
+    });
+    app.use(c2k(vite.middlewares));
+    app.listen(availablePort, () => {
+      console.log(`Server running on http://localhost:${availablePort}`);
+    });
+  } catch (error) {
+    console.error('Failed to start the server:', error);
+  }
 
-
+  console.log(`API running at http://localhost:${availablePort}/api/components`);
+}
 
 
 export { startServer };

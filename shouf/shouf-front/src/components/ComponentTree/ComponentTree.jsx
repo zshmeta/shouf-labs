@@ -5,7 +5,7 @@ import { useCurrentComponent } from '../../utils/useContext'
 import { ComponentTreeRoot, StyledList } from './ComponentTree.styled.js';
 
 const ComponentTree = () => {
-  const { loading, error, data: components } = useFetch('http://100.100.13.119:13001/api/components');
+  const { loading, error, data: components } = useFetch('http://100.100.13.109:13002/api/components');
   const { activeComponent, handleComponentClick } = useCurrentComponent();
 
   if (loading) {
