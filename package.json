@@ -1,0 +1,22 @@
+{
+  "name": "shouf",
+  "version": "1.0.0",
+  "description": "shouf your components",
+  "main": "shouf/bin/shouf.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "tea.zshmeta.dev/zshmeta/shouf-labs.js"
+  },
+  "keywords": [
+    "react",
+    "components"
+  ],
+  "author": "zshmeta",
+  "license": "MIT"
+}

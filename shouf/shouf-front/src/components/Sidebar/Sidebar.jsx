@@ -15,7 +15,7 @@ const Sidebar = ({ isOpen, onToggle }) => {
 
   const onRefresh = () => {
     // we post get to api to refresh the server
-    fetch('http://100.100.13.119:13001/api/updateComponents')
+    fetch('http://localhost:13001/api/updateComponents')
     .then(res => res.json())
     .then(data => console.log(data))
     .catch(err => console.log(err))
