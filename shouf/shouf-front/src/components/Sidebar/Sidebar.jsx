@@ -26,7 +26,7 @@ const Sidebar = ({ isOpen, onToggle }) => {
     <SidebarContainer className="sidebar" $sidebarOpen={isOpen}>
       {isOpen && (
         <>
-        <SidebarRefreshButton onClick={onRefresh}>Refresh</SidebarRefreshButton>
+        {/* <SidebarRefreshButton onClick={onRefresh}>Refresh</SidebarRefreshButton> */}
       <div className="search-bar">
         <input type="text" placeholder="Search..." />
         <button>Search</button>
