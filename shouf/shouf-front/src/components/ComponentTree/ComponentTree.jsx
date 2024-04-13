@@ -5,7 +5,7 @@ import { useCurrentComponent } from '../../utils/useContext'
 import { ComponentTreeRoot, StyledList } from './ComponentTree.styled.js';
 
 const ComponentTree = () => {
-  const { loading, error, data: components } = useFetch('http://100.100.13.109:13002/api/components');
+  const { loading, error, data: components } = useFetch('http://100.100.13.76:13002/api/components');
   const { activeComponent, handleComponentClick } = useCurrentComponent();
 
   if (loading) {
@@ -24,7 +24,7 @@ const ComponentTree = () => {
           const jsxName = component.jsx ? component.jsx.name : otherFileName ? `${otherFileName} : jsx unreadeable` : "";
           const jsxPath = component.jsx ? component.jsx.path : undefined;
 
-          const nameStyle = isUnreadeable ? { color: '#FF0000', fontSize: '17px' , pointer: 'none'} : {};  
+          const nameStyle = isUnreadeable ? { color: '#FF0000', fontSize: '17px' , pointerEvents: 'none'} : {};  
 
           return (
             <li key={index} onClick={() => handleComponentClick(jsxName, jsxPath)} className={activeComponent === jsxName ? 'active' : ''} style={nameStyle}>

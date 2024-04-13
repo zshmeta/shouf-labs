@@ -45,12 +45,27 @@ export const StyledList = styled.ul`
       border-bottom: 2px solid darkblue;
       margin-bottom: 0.5px;
       position: relative;
+      margin-bottom: 0.1px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 13px;
+    &:first-child {
+      border-top: 2px solid darkblue;
+    }
+    &:last-child {
+      margin-bottom: 1rem;
+      border-bottom: 2px solid darkblue;
+    }
       & span {
          position: absolute;
-         left: 50%;
+         bottom:-5px;
+         left: 20%;
         font-size: 33px;
-        transition: font-size 0.3s ease-in-out; top 0.1s ease-in-out;
+        transition: font-size 0.3s ease-in-out;
 
+      }
+      & active {
+        font-size: 33px;
       }
     }
   }
