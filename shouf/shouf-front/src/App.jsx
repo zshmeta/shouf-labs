@@ -18,7 +18,6 @@ const App = () =>{
     <>
       <SelectedComponentProvider>
       <Sidebar isOpen={sidebarOpen} onToggle={handleSidebarToggle} />
-      <Editor sidebarOpen={sidebarOpen} />
       <SandBox sidebarOpen={sidebarOpen} />
       </SelectedComponentProvider>
     </>

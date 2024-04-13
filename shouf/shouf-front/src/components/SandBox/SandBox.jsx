@@ -6,14 +6,15 @@ import { useCurrentComponent } from '../../utils/useContext';
 
 
 
-const code = `import x from 'x';
+const code = `
 
-// 
-function Greet() {
-  return <span>Hello World!</span>
+
+const Button = () => {
+  return <button>Hello, World!</button>;
 }
 
-<Greet />
+<Button />
+
 `; 
 
 // eslint-disable-next-line react/prop-types
@@ -53,6 +54,7 @@ const SandBox = ({sidebarOpen}) => {
 
   return (
       <SplitView $sidebarOpen={sidebarOpen}>
+        <h1>Shouf Labs</h1>
         <CodePreview ref={elRef} />
         <CodeEditor>
           <textarea value={codeState} onChange={onCodeChange} />
