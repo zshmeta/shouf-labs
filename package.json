@@ -7,7 +7,9 @@
     "example": "examples"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "set": "cd shouf/shouf-back; bun i && cd ../shouf-front; bun i",
+    "shouf": "node bin/shouf.mjs & cd shouf/shouf-front/; bun dev --host"
   },
   "repository": {
     "type": "git",
