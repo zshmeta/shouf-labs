@@ -26,21 +26,12 @@ export const Title = styled.h1`
 export const IconContainer = styled.div`
     padding-right: 23px;
     padding-bottom: 23px;
-    margin-right: ${({ isOpen }) => (isOpen ? '270px' : '0')};
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 200px;
-    border: 1px solid #ff9900;
+    right: ${({ isOpen }) => (isOpen ? '-670px' : '0')};
+    width: 250px;
 `;
-export const DarkModeIcon = styled.img.attrs({
-  src: "../../assets/dark-mode.svg",
-})``;
-
-export const HelpDocsIcon = styled.img.attrs({
-  src: "../../assets/help-docs.svg",
-})``;
-
-export const GitIcon = styled.img.attrs({
-  src: "../../assets/git.svg",
-})``;
+export const Img = styled.img`
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    `;

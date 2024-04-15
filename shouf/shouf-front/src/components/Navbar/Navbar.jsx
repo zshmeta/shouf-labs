@@ -1,21 +1,24 @@
 import React from 'react';
 import { NavbarContainer, Title, IconContainer } from './Navbar.styled';
-import { DarkModeIcon, HelpDocsIcon, GitIcon } from './Navbar.styled';
+import { Img } from './Navbar.styled';
+import DarkModeIcon from '../../assets/dark-mode.svg';
+import HelpDocsIcon from '../../assets/help-docs.svg';
+import GitIcon from '../../assets/git.svg';
 
 const Navbar = ({ sidebarOpen, setActiveComponent }) => {
     return (
         <NavbarContainer isOpen={sidebarOpen}>
             {setActiveComponent ? (
                 <Title onClick={() => setActiveComponent('yourComponent')}>
-                   
+                    Shouf Labs
                 </Title>
             ) : (
                 <Title> Shouf Labs</Title>
             )}
             <IconContainer>
-                <DarkModeIcon  />
-                <HelpDocsIcon  />
-                <GitIcon />
+                <Img src={DarkModeIcon} alt="Dark Mode" />
+                <Img src={HelpDocsIcon} alt="Help Docs" />
+                <Img src={GitIcon} alt="Git" />
             </IconContainer>
         </NavbarContainer>
     );
