@@ -17,7 +17,7 @@ const App = () => {
   return (
     <>
       <SelectedComponentProvider>
-        <Navbar sidebarOpen={sidebarOpen} setActiveComponent={null} />
+        <Navbar sidebarOpen={sidebarOpen} />
         <Sidebar isOpen={sidebarOpen} onToggle={handleSidebarToggle} />
         <SandBox sidebarOpen={sidebarOpen} />
       </SelectedComponentProvider>

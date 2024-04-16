@@ -1,11 +1,12 @@
-// Import necessary React and utility functions
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { useFetch } from '../../utils/useFetch';
 import { ComponentTreeRoot, StyledList } from './ComponentTree.styled.js';
+import { SelectedComponentContext } from '../SelectedComponent'; // Make sure this path is correct
 
 const ComponentTree = () => {
   const { loading, error, data: components } = useFetch('http://100.100.13.91:13002/api/components');
-  const [activeComponent, setActiveComponent] = useState(null);
+  const { activeComponent, handleComponentClick } = useContext(SelectedComponentContext);
+
   if (loading) {
     return <ComponentTreeRoot><p>Loading...</p></ComponentTreeRoot>;
   }
@@ -17,15 +18,16 @@ const ComponentTree = () => {
     <ComponentTreeRoot>
       <StyledList>
         {components.map((component, index) => {
-          const otherFileName = component.otherFiles[0].name.split('.')[0];
-          const isUnreadeable = component.jsx ? false : true;
-          const jsxName = component.jsx ? component.jsx.name : otherFileName ? `${otherFileName} : jsx unreadeable` : "";
-          const jsxPath = component.jsx ? component.jsx.path : undefined;
+          const otherFileName = component.otherFiles[0]?.name.split('.')[0];
+          const isUnreadable = !component.jsx;
+          const jsxName = component.jsx ? component.jsx.name : (otherFileName ? `${otherFileName} : jsx unreadable` : "");
 
-
+          // Debugging active component logic
+          console.log("Current:", jsxName, "Active:", activeComponent, "Is Active:", activeComponent === jsxName);
 
           return (
-            <li key={index} onClick={() => setActiveComponent(jsxName)} className={`${activeComponent === jsxName ? 'active' : ''} ${isUnreadeable ? 'unreadable' : ''}`}>
+            <li key={index} onClick={() => handleComponentClick(jsxName)}
+                className={`${activeComponent === jsxName ? 'active' : ''} ${isUnreadable ? 'unreadable' : ''}`}>
               <span>
                 {jsxName}
               </span>
@@ -36,6 +38,5 @@ const ComponentTree = () => {
     </ComponentTreeRoot>
   );
 }
-
 
 export default ComponentTree;

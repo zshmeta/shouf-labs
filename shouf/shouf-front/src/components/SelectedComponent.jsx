@@ -1,22 +1,30 @@
-import React, { createContext, useContext, useState } from 'react';
-// import fs from 'fs';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useFetch } from '../utils/useFetch';
 
 const SelectedComponentContext = createContext();
 
-// eslint-disable-next-line react/prop-types
+//eslint-disable-next-line
 const SelectedComponentProvider = ({ children }) => {
-  const [activeComponent, setActiveComponent] = useState(null);
+  const { data: components, loading, error } = useFetch('http://100.100.13.91:13002/api/components');
+  const [activeComponentName, setActiveComponentName] = useState(null);
+  const [activeComponentDetails, setActiveComponentDetails] = useState(null);
 
-  const handleComponentClick = (name) => {
-    setActiveComponent(name);
-    console.log('Selected component:', name);
+  useEffect(() => {
+    if (activeComponentName && components) {
+      const details = components.find(comp => comp.name === activeComponentName);
+      setActiveComponentDetails(details);
+    }
+  }, [activeComponentName, components]);
+
+  const handleComponentClick = (componentName) => {
+    setActiveComponentName(componentName);
   };
 
-  console.log('Active Component:', activeComponent);
-
   const value = {
-    activeComponent,
+    activeComponent: activeComponentDetails,
     handleComponentClick,
+    loading,
+    error
   };
 
   return (

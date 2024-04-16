@@ -6,10 +6,10 @@ export const NavbarContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     height: 60px;
-    width: 100%;
+    width: ${({ isOpen }) => (isOpen ? 'calc(100% - 270px)' : '100%')};
     left: -13px;
     border-bottom: 1px solid #ff9900;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out; 
     transform: ${({ isOpen }) => (isOpen ? 'translateX(270px)' : 'none')};
     position: fixed;
 `;
@@ -26,12 +26,13 @@ export const Title = styled.h1`
 export const IconContainer = styled.div`
     padding-right: 23px;
     padding-bottom: 23px;
-    right: ${({ isOpen }) => (isOpen ? '-670px' : '0')};
+    // right: ${({ isOpen }) => (isOpen ? '0' : '-270px')};
     width: 250px;
 `;
 export const Img = styled.img`
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     margin-left: 10px;
     margin-right: 10px;
-    `;
+    cursor: pointer;
+`;

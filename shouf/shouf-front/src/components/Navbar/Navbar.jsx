@@ -4,7 +4,7 @@ import { Img } from './Navbar.styled';
 import DarkModeIcon from '../../assets/dark-mode.svg';
 import HelpDocsIcon from '../../assets/help-docs.svg';
 import GitIcon from '../../assets/git.svg';
-
+// eslint-disable-next-line react/prop-types
 const Navbar = ({ sidebarOpen, setActiveComponent }) => {
     return (
         <NavbarContainer isOpen={sidebarOpen}>

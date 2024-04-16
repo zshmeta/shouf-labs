@@ -1,47 +1,39 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { SelectedComponentContext } from '../SelectedComponent';
 import ComponentTree from '../ComponentTree';
 import {
   SidebarContainer,
   SidebarTitle,
-  SidebarLink,
   SidebarTreeBox,
   SidebarButton,
   SidebarRefreshButton,
   SidebarNotification
 } from './Sidebar.styled.js';
 
-// eslint-disable-next-line react/prop-types
 const Sidebar = ({ isOpen, onToggle }) => {
+  const { activeComponent, refreshComponents } = useContext(SelectedComponentContext);
 
-  const onRefresh = () => {
-    // we post get to api to refresh the server
-    fetch('http://100.100.13.76:13002/api/components')
-    .then(res => res.json())
-    .then(data => console.log(data))
-    .catch(err => console.log(err))
-    
-  }
+  const handleRefresh = () => {
+    refreshComponents();  // This would be a new method provided by the context
+  };
 
   return (
-    <SidebarContainer className="sidebar" $sidebarOpen={isOpen}>
+    <SidebarContainer $sidebarOpen={isOpen}>
       {isOpen && (
         <>
-        {/* <SidebarRefreshButton onClick={onRefresh}>Refresh</SidebarRefreshButton> */}
-      <div className="search-bar">
-        <input type="text" placeholder="Search..." />
-        <button>Search</button>
-      </div>
-      <SidebarTitle>Components</SidebarTitle>
-      <div className="component-tree">
-        <SidebarTreeBox>
-        <ComponentTree />
-        </SidebarTreeBox>
-      </div>
-      </>
+          <div className="search-bar">
+            <input type="text" placeholder="Search..." />
+            <button>Search</button>
+          </div>
+          <SidebarTitle>Components</SidebarTitle>
+          <SidebarTreeBox>
+            <ComponentTree />
+          </SidebarTreeBox>
+          <SidebarRefreshButton onClick={handleRefresh}>Refresh</SidebarRefreshButton>
+        </>
       )}
-      <SidebarButton onClick={onToggle}>{isOpen ? '<' : '>'}</SidebarButton>
-      <SidebarNotification>1</SidebarNotification>
-
+      <SidebarButton onClick={onToggle}>{isOpen ? '>' : '<'}</SidebarButton>
+      <SidebarNotification>{activeComponent ? '1' : '0'}</SidebarNotification>
     </SidebarContainer>
   );
 };
