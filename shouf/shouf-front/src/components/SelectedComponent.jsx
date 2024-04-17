@@ -9,23 +9,30 @@ const SelectedComponentProvider = ({ children }) => {
   const [activeComponentName, setActiveComponentName] = useState(null);
   const [activeComponentDetails, setActiveComponentDetails] = useState(null);
 
-  useEffect(() => {
-    if (activeComponentName && components) {
-      const details = components.find(comp => comp.name === activeComponentName);
-      setActiveComponentDetails(details);
-    }
-  }, [activeComponentName, components]);
 
-  const handleComponentClick = (componentName) => {
-    setActiveComponentName(componentName);
+  const handleComponentClick = (jsxName) => {
+  console.log("Setting active component name:", jsxName);
+    setActiveComponentName(jsxName);
+  };
+useEffect(() => {
+  if (activeComponentName && components) {
+    const details = components.find(comp => comp.jsx && comp.jsx.name === activeComponentName);
+    setActiveComponentDetails(details);
+    console.log("Active component details set:", details);
+  } else {
+    console.log("Active component name or components not set or empty:", activeComponentName, components);
+  }
+}, [activeComponentName, components]);
+
+// In your Provider
+const value = {
+  activeComponent: activeComponentDetails,
+  handleComponentClick,
+  loading,
+  error,
+  components,
   };
 
-  const value = {
-    activeComponent: activeComponentDetails,
-    handleComponentClick,
-    loading,
-    error
-  };
 
   return (
     <SelectedComponentContext.Provider value={value}>
@@ -35,3 +42,5 @@ const SelectedComponentProvider = ({ children }) => {
 };
 
 export { SelectedComponentProvider, SelectedComponentContext };
+
+

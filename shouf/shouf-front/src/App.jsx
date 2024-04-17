@@ -13,10 +13,13 @@ const App = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
+  
+
 
   return (
     <>
       <SelectedComponentProvider>
+        
         <Navbar sidebarOpen={sidebarOpen} />
         <Sidebar isOpen={sidebarOpen} onToggle={handleSidebarToggle} />
         <SandBox sidebarOpen={sidebarOpen} />
