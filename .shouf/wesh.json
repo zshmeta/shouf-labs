@@ -2248,22 +2248,24 @@
       "path": "/root/shouf-labs/src/components/Button/Button.jsx",
       "code": "  import React, { useState } from 'react';\n  import { ButtonWrapper } from './Button.styled';\n\n  const Button = ({ ...props }) => {\n    const [count, setCount] = useState(0);\n    const [isDisabled, setIsDisabled] = useState(false);\n\n    const handleClick = () => {\n      // Handle click events or other interactions here\n      setCount(count + 1);\n    };\n\n    const handleDisable = () => {\n      setIsDisabled(!isDisabled);\n    };\n\n    return (\n      <ButtonWrapper\n        className={styles.Button}\n        onClick={handleClick}\n        disabled={isDisabled}\n        {...props}\n      >\n        {isDisabled ? 'Disabled' : 'Click Me'}\n        <span>Count: {count}</span>\n        <button onClick={handleDisable}>\n          {isDisabled ? 'Enable' : 'Disable'}\n        </button>\n      </ButtonWrapper>\n    );\n  };\n\n  export default Button;\n"
     },
-    "styles": {
-      "name": "Button",
-      "path": "/root/shouf-labs/src/components/Button/Button.styled.js",
-      "code": "\nimport styled from 'styled-components';\n\nexport const ButtonWrapper = styled.div`\n  display: block;\n  padding: 10px;\n  color: #fff;\n  background-color: #000;\n`"
-    },
+    "styledJs": null,
+    "css": null,
     "md": {
       "name": "Button.Readme",
       "path": "/root/shouf-labs/src/components/Button/Button.Readme.md",
       "code": "\n    # Button\n    \n    *by zshmeta*\n    \n    **Button.README - A Quick Overview**\n    \n    ### What is this\n    \n    (TODO: Write a brief description of the compo.)\n    \n    ## Why is This?\n    \n    (TODO: Explain why this compo exists or its purpose in your project.)\n    \n    ## How is this?\n    \n    (TODO: Describe how to use this compo or any relevant information about its implementation.)\n    \n    #### A Word from the dev...\n    \n    (TODO: Any personal notes from the developer about this compo.)\n    \n    Special thanks goes to me, zshmeta. All rights reserved.\n      "
     },
-    "test": {
-      "name": "Button",
-      "path": "/root/shouf-labs/src/components/Button/Button.test.js",
-      "code": "\"// Import necessary functions from the testing library\nimport { render, screen } from '@testing-library/react';\n\n// Import the component you want to test\nimport Button from './Button';\n\n// Group related tests using the describe function\ndescribe('Button Component', () => {\n  // Test case: Check if the CompoName component renders correctly\n  it('renders Button Component', async () => {\n    // Render the Button Component\n    render(<Button />);\n\n    // Check if the element is in the document\n    expect(ButtonElement).toBeInTheDocument();\n  });\n\n  // Test case: Check if a specific CSS class is applied to an element\n  it('applies the correct CSS class to an element', async () => {\n    // Render the Button Component\n    render(<Button />);\n\n    // Find the element with the specified CSS class\n    const cssClassElement = await screen.findByTestId('element-with-css-class');\n\n    // Check if the element has the expected CSS class\n    expect(cssClassElement).toHaveClass('expected-css-class');\n  });\n\n  // Test case: Renders without crashing\n  test('renders without crashing', () => {\n    render(<Button />);\n  });\n\n  // Test case: Matches snapshot\n  test('matches snapshot', () => {\n    const { asFragment } = render(<Button />);\n    expect(asFragment()).toMatchSnapshot();\n  });\n\n  // Additional generic test case\n  test('generic test case', () => {\n    // Add your generic test implementation here\n  });\n});"
-    },
     "otherFiles": [
+      {
+        "name": "Button.styled",
+        "path": "/root/shouf-labs/src/components/Button/Button.styled.js",
+        "code": "\nimport styled from 'styled-components';\n\nexport const ButtonWrapper = styled.div`\n  display: block;\n  padding: 10px;\n  color: #fff;\n  background-color: #000;\n`"
+      },
+      {
+        "name": "Button.test",
+        "path": "/root/shouf-labs/src/components/Button/Button.test.js",
+        "code": "\"// Import necessary functions from the testing library\nimport { render, screen } from '@testing-library/react';\n\n// Import the component you want to test\nimport Button from './Button';\n\n// Group related tests using the describe function\ndescribe('Button Component', () => {\n  // Test case: Check if the CompoName component renders correctly\n  it('renders Button Component', async () => {\n    // Render the Button Component\n    render(<Button />);\n\n    // Check if the element is in the document\n    expect(ButtonElement).toBeInTheDocument();\n  });\n\n  // Test case: Check if a specific CSS class is applied to an element\n  it('applies the correct CSS class to an element', async () => {\n    // Render the Button Component\n    render(<Button />);\n\n    // Find the element with the specified CSS class\n    const cssClassElement = await screen.findByTestId('element-with-css-class');\n\n    // Check if the element has the expected CSS class\n    expect(cssClassElement).toHaveClass('expected-css-class');\n  });\n\n  // Test case: Renders without crashing\n  test('renders without crashing', () => {\n    render(<Button />);\n  });\n\n  // Test case: Matches snapshot\n  test('matches snapshot', () => {\n    const { asFragment } = render(<Button />);\n    expect(asFragment()).toMatchSnapshot();\n  });\n\n  // Additional generic test case\n  test('generic test case', () => {\n    // Add your generic test implementation here\n  });\n});"
+      },
       {
         "name": "index",
         "path": "/root/shouf-labs/src/components/Button/index.js",
@@ -3377,22 +3379,24 @@
       "path": "/root/shouf-labs/src/components/Card/Card.jsx",
       "code": "import React from 'react';\n\nconst Card = () => {\n  return (\n    <div className=\"card\">\n      <img src=\"card-image.jpg\" alt=\"Card Image\" />\n      <div className=\"card-content\">\n        <h2>Card Title</h2>\n        <p>Card description goes here</p>\n      </div>\n    </div>\n  );\n};\n\nexport default Card;\n"
     },
-    "styles": {
-      "name": "Card",
-      "path": "/root/shouf-labs/src/components/Card/Card.styled.js",
-      "code": "\nimport styled from 'styled-components';\n\nexport const CardWrapper = styled.div`\n  display: block;\n  padding: 10px;\n  color: #fff;\n  background-color: #000;\n`"
-    },
+    "styledJs": null,
+    "css": null,
     "md": {
       "name": "Card.Readme",
       "path": "/root/shouf-labs/src/components/Card/Card.Readme.md",
       "code": "\n    # Card\n    \n    *by zshmeta*\n    \n    **Card.README - A Quick Overview**\n    \n    ### What is this\n    \n    (TODO: Write a brief description of the compo.)\n    \n    ## Why is This?\n    \n    (TODO: Explain why this compo exists or its purpose in your project.)\n    \n    ## How is this?\n    \n    (TODO: Describe how to use this compo or any relevant information about its implementation.)\n    \n    #### A Word from the dev...\n    \n    (TODO: Any personal notes from the developer about this compo.)\n    \n    Special thanks goes to me, zshmeta. All rights reserved.\n      "
     },
-    "test": {
-      "name": "Card",
-      "path": "/root/shouf-labs/src/components/Card/Card.test.js",
-      "code": "\"// Import necessary functions from the testing library\nimport { render, screen } from '@testing-library/react';\n\n// Import the component you want to test\nimport Card from './Card';\n\n// Group related tests using the describe function\ndescribe('Card Component', () => {\n  // Test case: Check if the CompoName component renders correctly\n  it('renders Card Component', async () => {\n    // Render the Card Component\n    render(<Card />);\n\n    // Check if the element is in the document\n    expect(CardElement).toBeInTheDocument();\n  });\n\n  // Test case: Check if a specific CSS class is applied to an element\n  it('applies the correct CSS class to an element', async () => {\n    // Render the Card Component\n    render(<Card />);\n\n    // Find the element with the specified CSS class\n    const cssClassElement = await screen.findByTestId('element-with-css-class');\n\n    // Check if the element has the expected CSS class\n    expect(cssClassElement).toHaveClass('expected-css-class');\n  });\n\n  // Test case: Renders without crashing\n  test('renders without crashing', () => {\n    render(<Card />);\n  });\n\n  // Test case: Matches snapshot\n  test('matches snapshot', () => {\n    const { asFragment } = render(<Card />);\n    expect(asFragment()).toMatchSnapshot();\n  });\n\n  // Additional generic test case\n  test('generic test case', () => {\n    // Add your generic test implementation here\n  });\n});"
-    },
     "otherFiles": [
+      {
+        "name": "Card.styled",
+        "path": "/root/shouf-labs/src/components/Card/Card.styled.js",
+        "code": "\nimport styled from 'styled-components';\n\nexport const CardWrapper = styled.div`\n  display: block;\n  padding: 10px;\n  color: #fff;\n  background-color: #000;\n`"
+      },
+      {
+        "name": "Card.test",
+        "path": "/root/shouf-labs/src/components/Card/Card.test.js",
+        "code": "\"// Import necessary functions from the testing library\nimport { render, screen } from '@testing-library/react';\n\n// Import the component you want to test\nimport Card from './Card';\n\n// Group related tests using the describe function\ndescribe('Card Component', () => {\n  // Test case: Check if the CompoName component renders correctly\n  it('renders Card Component', async () => {\n    // Render the Card Component\n    render(<Card />);\n\n    // Check if the element is in the document\n    expect(CardElement).toBeInTheDocument();\n  });\n\n  // Test case: Check if a specific CSS class is applied to an element\n  it('applies the correct CSS class to an element', async () => {\n    // Render the Card Component\n    render(<Card />);\n\n    // Find the element with the specified CSS class\n    const cssClassElement = await screen.findByTestId('element-with-css-class');\n\n    // Check if the element has the expected CSS class\n    expect(cssClassElement).toHaveClass('expected-css-class');\n  });\n\n  // Test case: Renders without crashing\n  test('renders without crashing', () => {\n    render(<Card />);\n  });\n\n  // Test case: Matches snapshot\n  test('matches snapshot', () => {\n    const { asFragment } = render(<Card />);\n    expect(asFragment()).toMatchSnapshot();\n  });\n\n  // Additional generic test case\n  test('generic test case', () => {\n    // Add your generic test implementation here\n  });\n});"
+      },
       {
         "name": "index",
         "path": "/root/shouf-labs/src/components/Card/index.js",
@@ -3402,47 +3406,51 @@
   },
   {
     "jsx": null,
-    "styles": {
-      "name": "CheckBox.scoped",
-      "path": "/root/shouf-labs/src/components/CheckBox/CheckBox.scoped.scss",
-      "code": "\n.CheckBox {\n  display: block;\n  padding: 10px;\n  color: #fff;\n  background-color: #000;\n}\n"
-    },
+    "styledJs": null,
+    "css": null,
     "md": {
       "name": "CheckBox.Readme",
       "path": "/root/shouf-labs/src/components/CheckBox/CheckBox.Readme.md",
       "code": "\n    # CheckBox\n    \n    *by zshmeta*\n    \n    **CheckBox.README - A Quick Overview**\n    \n    ### What is this\n    \n    (TODO: Write a brief description of the compo.)\n    \n    ## Why is This?\n    \n    (TODO: Explain why this compo exists or its purpose in your project.)\n    \n    ## How is this?\n    \n    (TODO: Describe how to use this compo or any relevant information about its implementation.)\n    \n    #### A Word from the dev...\n    \n    (TODO: Any personal notes from the developer about this compo.)\n    \n    Special thanks goes to me, zshmeta. All rights reserved.\n      "
     },
-    "test": {
-      "name": "CheckBox",
-      "path": "/root/shouf-labs/src/components/CheckBox/CheckBox.test.js",
-      "code": "\"// Import necessary functions from the testing library\nimport { render, screen } from '@testing-library/react';\n\n// Import the component you want to test\nimport CheckBox from './CheckBox';\n\n// Group related tests using the describe function\ndescribe('CheckBox Component', () => {\n  // Test case: Check if the CompoName component renders correctly\n  it('renders CheckBox Component', async () => {\n    // Render the CheckBox Component\n    render(<CheckBox />);\n\n    // Check if the element is in the document\n    expect(CheckBoxElement).toBeInTheDocument();\n  });\n\n  // Test case: Check if a specific CSS class is applied to an element\n  it('applies the correct CSS class to an element', async () => {\n    // Render the CheckBox Component\n    render(<CheckBox />);\n\n    // Find the element with the specified CSS class\n    const cssClassElement = await screen.findByTestId('element-with-css-class');\n\n    // Check if the element has the expected CSS class\n    expect(cssClassElement).toHaveClass('expected-css-class');\n  });\n\n  // Test case: Renders without crashing\n  test('renders without crashing', () => {\n    render(<CheckBox />);\n  });\n\n  // Test case: Matches snapshot\n  test('matches snapshot', () => {\n    const { asFragment } = render(<CheckBox />);\n    expect(asFragment()).toMatchSnapshot();\n  });\n\n  // Additional generic test case\n  test('generic test case', () => {\n    // Add your generic test implementation here\n  });\n});"
-    },
     "otherFiles": [
+      {
+        "name": "CheckBox.test",
+        "path": "/root/shouf-labs/src/components/CheckBox/CheckBox.test.js",
+        "code": "\"// Import necessary functions from the testing library\nimport { render, screen } from '@testing-library/react';\n\n// Import the component you want to test\nimport CheckBox from './CheckBox';\n\n// Group related tests using the describe function\ndescribe('CheckBox Component', () => {\n  // Test case: Check if the CompoName component renders correctly\n  it('renders CheckBox Component', async () => {\n    // Render the CheckBox Component\n    render(<CheckBox />);\n\n    // Check if the element is in the document\n    expect(CheckBoxElement).toBeInTheDocument();\n  });\n\n  // Test case: Check if a specific CSS class is applied to an element\n  it('applies the correct CSS class to an element', async () => {\n    // Render the CheckBox Component\n    render(<CheckBox />);\n\n    // Find the element with the specified CSS class\n    const cssClassElement = await screen.findByTestId('element-with-css-class');\n\n    // Check if the element has the expected CSS class\n    expect(cssClassElement).toHaveClass('expected-css-class');\n  });\n\n  // Test case: Renders without crashing\n  test('renders without crashing', () => {\n    render(<CheckBox />);\n  });\n\n  // Test case: Matches snapshot\n  test('matches snapshot', () => {\n    const { asFragment } = render(<CheckBox />);\n    expect(asFragment()).toMatchSnapshot();\n  });\n\n  // Additional generic test case\n  test('generic test case', () => {\n    // Add your generic test implementation here\n  });\n});"
+      },
       {
         "name": "index",
         "path": "/root/shouf-labs/src/components/CheckBox/index.js",
         "code": "\n      export { default } from './CheckBox';\n      "
       }
-    ]
+    ],
+    "styles": {
+      "name": "CheckBox.scoped",
+      "path": "/root/shouf-labs/src/components/CheckBox/CheckBox.scoped.scss",
+      "code": "\n.CheckBox {\n  display: block;\n  padding: 10px;\n  color: #fff;\n  background-color: #000;\n}\n"
+    }
   },
   {
     "jsx": null,
-    "styles": {
-      "name": "Checkbox",
-      "path": "/root/shouf-labs/src/components/Checkbox/Checkbox.styled.js",
-      "code": "\nimport styled from 'styled-components';\n\nexport const CheckboxWrapper = styled.div`\n  display: block;\n  padding: 10px;\n  color: #fff;\n  background-color: #000;\n`"
-    },
+    "styledJs": null,
+    "css": null,
     "md": {
       "name": "Checkbox.Readme",
       "path": "/root/shouf-labs/src/components/Checkbox/Checkbox.Readme.md",
       "code": "\n# Checkbox\n\n*by zshmeta*\n\n**Checkbox.README - A Quick Overview**\n\n### What is this\n\n(TODO: Write a brief description of the compo.)\n\n## Why is This?\n\n(TODO: Explain why this compo exists or its purpose in your project.)\n\n## How is this?\n\n(TODO: Describe how to use this compo or any relevant information about its implementation.)\n\n#### A Word from the dev...\n\n(TODO: Any personal notes from the developer about this compo.)\n\nSpecial thanks goes to me, zshmeta. All rights reserved.\n  "
     },
-    "test": {
-      "name": "Checkbox",
-      "path": "/root/shouf-labs/src/components/Checkbox/Checkbox.test.js",
-      "code": "\n\"// Import necessary functions from the testing library\nimport { render, screen } from '@testing-library/react';\n\n// Import the component you want to test\nimport Checkbox from './Checkbox';\n\n// Group related tests using the describe function\ndescribe('Checkbox Component', () => {\n  // Test case: Check if the CompoName component renders correctly\n  it('renders Checkbox Component', async () => {\n    // Render the Checkbox Component\n    render(<Checkbox />);\n\n    // Check if the element is in the document\n    expect(CheckboxElement).toBeInTheDocument();\n  });\n\n  // Test case: Check if a specific CSS class is applied to an element\n  it('applies the correct CSS class to an element', async () => {\n    // Render the Checkbox Component\n    render(<Checkbox />);\n\n    // Find the element with the specified CSS class\n    const cssClassElement = await screen.findByTestId('element-with-css-class');\n\n    // Check if the element has the expected CSS class\n    expect(cssClassElement).toHaveClass('expected-css-class');\n  });\n\n  // Test case: Renders without crashing\n  test('renders without crashing', () => {\n    render(<Checkbox />);\n  });\n\n  // Test case: Matches snapshot\n  test('matches snapshot', () => {\n    const { asFragment } = render(<Checkbox />);\n    expect(asFragment()).toMatchSnapshot();\n  });\n\n  // Additional generic test case\n  test('generic test case', () => {\n    // Add your generic test implementation here\n  });\n});"
-    },
     "otherFiles": [
+      {
+        "name": "Checkbox.styled",
+        "path": "/root/shouf-labs/src/components/Checkbox/Checkbox.styled.js",
+        "code": "\nimport styled from 'styled-components';\n\nexport const CheckboxWrapper = styled.div`\n  display: block;\n  padding: 10px;\n  color: #fff;\n  background-color: #000;\n`"
+      },
+      {
+        "name": "Checkbox.test",
+        "path": "/root/shouf-labs/src/components/Checkbox/Checkbox.test.js",
+        "code": "\n\"// Import necessary functions from the testing library\nimport { render, screen } from '@testing-library/react';\n\n// Import the component you want to test\nimport Checkbox from './Checkbox';\n\n// Group related tests using the describe function\ndescribe('Checkbox Component', () => {\n  // Test case: Check if the CompoName component renders correctly\n  it('renders Checkbox Component', async () => {\n    // Render the Checkbox Component\n    render(<Checkbox />);\n\n    // Check if the element is in the document\n    expect(CheckboxElement).toBeInTheDocument();\n  });\n\n  // Test case: Check if a specific CSS class is applied to an element\n  it('applies the correct CSS class to an element', async () => {\n    // Render the Checkbox Component\n    render(<Checkbox />);\n\n    // Find the element with the specified CSS class\n    const cssClassElement = await screen.findByTestId('element-with-css-class');\n\n    // Check if the element has the expected CSS class\n    expect(cssClassElement).toHaveClass('expected-css-class');\n  });\n\n  // Test case: Renders without crashing\n  test('renders without crashing', () => {\n    render(<Checkbox />);\n  });\n\n  // Test case: Matches snapshot\n  test('matches snapshot', () => {\n    const { asFragment } = render(<Checkbox />);\n    expect(asFragment()).toMatchSnapshot();\n  });\n\n  // Additional generic test case\n  test('generic test case', () => {\n    // Add your generic test implementation here\n  });\n});"
+      },
       {
         "name": "index",
         "path": "/root/shouf-labs/src/components/Checkbox/index.js",
@@ -5795,22 +5803,24 @@
       "path": "/root/shouf-labs/src/components/Input/Input.jsx",
       "code": "import React, { useState } from 'react';\n\nconst Input = () => {\n  const [value, setValue] = useState('');\n  const [isValid, setIsValid] = useState(true);\n  const [isActivated, setIsActivated] = useState(false);\n\n  const handleChange = (e) => {\n    setValue(e.target.value);\n    setIsValid(e.target.value !== '');\n  };\n\n  const handleActivate = () => {\n    setIsActivated(true);\n  };\n\n  return (\n    <div>\n      <input\n        type=\"text\"\n        value={value}\n        onChange={handleChange}\n        disabled={!isActivated}\n      />\n      {!isValid && isActivated && <p>Please enter a valid value</p>}\n      <button onClick={handleActivate}>Activate</button>\n    </div>\n  );\n};\n\nexport default Input;\n"
     },
-    "styles": {
-      "name": "Input",
-      "path": "/root/shouf-labs/src/components/Input/Input.styled.js",
-      "code": "import styled from 'styled-components';\n\nexport const InputContainer = styled.div`\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 15px;\n  background-color: ${props => props.disabled ? '#e0e0e0' : '#fff'};\n  border-top: 1px solid ${props => props.error ? 'darkorange' : 'transparent'};\n  border-left: 1px solid ${props => props.error ? 'darkorange' : 'transparent'};\n  border-right: 1px solid ${props => props.valid ? 'green' : 'transparent'};\n  border-bottom: 1px solid ${props => props.valid ? 'green' : 'transparent'};\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);\n`;\n"
-    },
+    "styledJs": null,
+    "css": null,
     "md": {
       "name": "Input.Readme",
       "path": "/root/shouf-labs/src/components/Input/Input.Readme.md",
       "code": "\n    # Input\n    \n    *by zshmeta*\n    \n    **Input.README - A Quick Overview**\n    \n    ### What is this\n    \n    (TODO: Write a brief description of the compo.)\n    \n    ## Why is This?\n    \n    (TODO: Explain why this compo exists or its purpose in your project.)\n    \n    ## How is this?\n    \n    (TODO: Describe how to use this compo or any relevant information about its implementation.)\n    \n    #### A Word from the dev...\n    \n    (TODO: Any personal notes from the developer about this compo.)\n    \n    Special thanks goes to me, zshmeta. All rights reserved.\n      "
     },
-    "test": {
-      "name": "Input",
-      "path": "/root/shouf-labs/src/components/Input/Input.test.js",
-      "code": "\"// Import necessary functions from the testing library\nimport { render, screen } from '@testing-library/react';\n\n// Import the component you want to test\nimport Input from './Input';\n\n// Group related tests using the describe function\ndescribe('Input Component', () => {\n  // Test case: Check if the CompoName component renders correctly\n  it('renders Input Component', async () => {\n    // Render the Input Component\n    render(<Input />);\n\n    // Check if the element is in the document\n    expect(InputElement).toBeInTheDocument();\n  });\n\n  // Test case: Check if a specific CSS class is applied to an element\n  it('applies the correct CSS class to an element', async () => {\n    // Render the Input Component\n    render(<Input />);\n\n    // Find the element with the specified CSS class\n    const cssClassElement = await screen.findByTestId('element-with-css-class');\n\n    // Check if the element has the expected CSS class\n    expect(cssClassElement).toHaveClass('expected-css-class');\n  });\n\n  // Test case: Renders without crashing\n  test('renders without crashing', () => {\n    render(<Input />);\n  });\n\n  // Test case: Matches snapshot\n  test('matches snapshot', () => {\n    const { asFragment } = render(<Input />);\n    expect(asFragment()).toMatchSnapshot();\n  });\n\n  // Additional generic test case\n  test('generic test case', () => {\n    // Add your generic test implementation here\n  });\n});"
-    },
     "otherFiles": [
+      {
+        "name": "Input.styled",
+        "path": "/root/shouf-labs/src/components/Input/Input.styled.js",
+        "code": "import styled from 'styled-components';\n\nexport const InputContainer = styled.div`\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 15px;\n  background-color: ${props => props.disabled ? '#e0e0e0' : '#fff'};\n  border-top: 1px solid ${props => props.error ? 'darkorange' : 'transparent'};\n  border-left: 1px solid ${props => props.error ? 'darkorange' : 'transparent'};\n  border-right: 1px solid ${props => props.valid ? 'green' : 'transparent'};\n  border-bottom: 1px solid ${props => props.valid ? 'green' : 'transparent'};\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);\n`;\n"
+      },
+      {
+        "name": "Input.test",
+        "path": "/root/shouf-labs/src/components/Input/Input.test.js",
+        "code": "\"// Import necessary functions from the testing library\nimport { render, screen } from '@testing-library/react';\n\n// Import the component you want to test\nimport Input from './Input';\n\n// Group related tests using the describe function\ndescribe('Input Component', () => {\n  // Test case: Check if the CompoName component renders correctly\n  it('renders Input Component', async () => {\n    // Render the Input Component\n    render(<Input />);\n\n    // Check if the element is in the document\n    expect(InputElement).toBeInTheDocument();\n  });\n\n  // Test case: Check if a specific CSS class is applied to an element\n  it('applies the correct CSS class to an element', async () => {\n    // Render the Input Component\n    render(<Input />);\n\n    // Find the element with the specified CSS class\n    const cssClassElement = await screen.findByTestId('element-with-css-class');\n\n    // Check if the element has the expected CSS class\n    expect(cssClassElement).toHaveClass('expected-css-class');\n  });\n\n  // Test case: Renders without crashing\n  test('renders without crashing', () => {\n    render(<Input />);\n  });\n\n  // Test case: Matches snapshot\n  test('matches snapshot', () => {\n    const { asFragment } = render(<Input />);\n    expect(asFragment()).toMatchSnapshot();\n  });\n\n  // Additional generic test case\n  test('generic test case', () => {\n    // Add your generic test implementation here\n  });\n});"
+      },
       {
         "name": "index",
         "path": "/root/shouf-labs/src/components/Input/index.js",
@@ -5820,22 +5830,24 @@
   },
   {
     "jsx": null,
-    "styles": {
-      "name": "Radio",
-      "path": "/root/shouf-labs/src/components/Radio/Radio.styled.js",
-      "code": "\nimport styled from 'styled-components';\n\nexport const RadioWrapper = styled.div`\n  display: block;\n  padding: 10px;\n  color: #fff;\n  background-color: #000;\n`"
-    },
+    "styledJs": null,
+    "css": null,
     "md": {
       "name": "Radio.Readme",
       "path": "/root/shouf-labs/src/components/Radio/Radio.Readme.md",
       "code": "\n# Radio\n\n*by zshmeta*\n\n**Radio.README - A Quick Overview**\n\n### What is this\n\n(TODO: Write a brief description of the compo.)\n\n## Why is This?\n\n(TODO: Explain why this compo exists or its purpose in your project.)\n\n## How is this?\n\n(TODO: Describe how to use this compo or any relevant information about its implementation.)\n\n#### A Word from the dev...\n\n(TODO: Any personal notes from the developer about this compo.)\n\nSpecial thanks goes to me, zshmeta. All rights reserved.\n  "
     },
-    "test": {
-      "name": "Radio",
-      "path": "/root/shouf-labs/src/components/Radio/Radio.test.js",
-      "code": "\n\"// Import necessary functions from the testing library\nimport { render, screen } from '@testing-library/react';\n\n// Import the component you want to test\nimport Radio from './Radio';\n\n// Group related tests using the describe function\ndescribe('Radio Component', () => {\n  // Test case: Check if the CompoName component renders correctly\n  it('renders Radio Component', async () => {\n    // Render the Radio Component\n    render(<Radio />);\n\n    // Check if the element is in the document\n    expect(RadioElement).toBeInTheDocument();\n  });\n\n  // Test case: Check if a specific CSS class is applied to an element\n  it('applies the correct CSS class to an element', async () => {\n    // Render the Radio Component\n    render(<Radio />);\n\n    // Find the element with the specified CSS class\n    const cssClassElement = await screen.findByTestId('element-with-css-class');\n\n    // Check if the element has the expected CSS class\n    expect(cssClassElement).toHaveClass('expected-css-class');\n  });\n\n  // Test case: Renders without crashing\n  test('renders without crashing', () => {\n    render(<Radio />);\n  });\n\n  // Test case: Matches snapshot\n  test('matches snapshot', () => {\n    const { asFragment } = render(<Radio />);\n    expect(asFragment()).toMatchSnapshot();\n  });\n\n  // Additional generic test case\n  test('generic test case', () => {\n    // Add your generic test implementation here\n  });\n});"
-    },
     "otherFiles": [
+      {
+        "name": "Radio.styled",
+        "path": "/root/shouf-labs/src/components/Radio/Radio.styled.js",
+        "code": "\nimport styled from 'styled-components';\n\nexport const RadioWrapper = styled.div`\n  display: block;\n  padding: 10px;\n  color: #fff;\n  background-color: #000;\n`"
+      },
+      {
+        "name": "Radio.test",
+        "path": "/root/shouf-labs/src/components/Radio/Radio.test.js",
+        "code": "\n\"// Import necessary functions from the testing library\nimport { render, screen } from '@testing-library/react';\n\n// Import the component you want to test\nimport Radio from './Radio';\n\n// Group related tests using the describe function\ndescribe('Radio Component', () => {\n  // Test case: Check if the CompoName component renders correctly\n  it('renders Radio Component', async () => {\n    // Render the Radio Component\n    render(<Radio />);\n\n    // Check if the element is in the document\n    expect(RadioElement).toBeInTheDocument();\n  });\n\n  // Test case: Check if a specific CSS class is applied to an element\n  it('applies the correct CSS class to an element', async () => {\n    // Render the Radio Component\n    render(<Radio />);\n\n    // Find the element with the specified CSS class\n    const cssClassElement = await screen.findByTestId('element-with-css-class');\n\n    // Check if the element has the expected CSS class\n    expect(cssClassElement).toHaveClass('expected-css-class');\n  });\n\n  // Test case: Renders without crashing\n  test('renders without crashing', () => {\n    render(<Radio />);\n  });\n\n  // Test case: Matches snapshot\n  test('matches snapshot', () => {\n    const { asFragment } = render(<Radio />);\n    expect(asFragment()).toMatchSnapshot();\n  });\n\n  // Additional generic test case\n  test('generic test case', () => {\n    // Add your generic test implementation here\n  });\n});"
+      },
       {
         "name": "index",
         "path": "/root/shouf-labs/src/components/Radio/index.js",

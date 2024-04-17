@@ -23,7 +23,7 @@ return (
         const otherFileName = component.otherFiles[0]?.name.split('.')[0];
         const isUnreadable = !component.jsx;
         const jsxName = component.jsx ? component.jsx.name : (otherFileName ? `${otherFileName} : jsx unreadable` : "");
-        console.log(`jsxName: ${jsxName}, activeComponent: ${activeComponent}, activeComponent.name: ${activeComponent?.jsx?.name}`);
+        console.log(`jsxName: ${jsxName},  activeComponent.name: ${activeComponent?.jsx?.name}`);
 
         return (
           <li key={jsxName} onClick={() => handleComponentClick(jsxName)}

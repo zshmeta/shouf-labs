@@ -8,7 +8,10 @@ const SelectedComponentProvider = ({ children }) => {
   const { data: components, loading, error } = useFetch('http://100.100.13.91:13002/api/components');
   const [activeComponentName, setActiveComponentName] = useState(null);
   const [activeComponentDetails, setActiveComponentDetails] = useState(null);
-
+  const [activeComponentCode, setActiveComponentCode] = useState(null);
+  const [activeComponentMd, setActiveComponentMd] = useState(null);
+  const [activeComponentStyle, setActiveComponentStyle] = useState(null);
+  const [activeComponentTest, setActiveComponentTest] = useState(null);
 
   const handleComponentClick = (jsxName) => {
   console.log("Setting active component name:", jsxName);
@@ -17,6 +20,10 @@ const SelectedComponentProvider = ({ children }) => {
 useEffect(() => {
   if (activeComponentName && components) {
     const details = components.find(comp => comp.jsx && comp.jsx.name === activeComponentName);
+    setActiveComponentCode(details?.jsx?.code);
+    setActiveComponentMd(details?.md?.code);
+    setActiveComponentStyle(details?.style?.code);
+    setActiveComponentTest(details?.test?.code);
     setActiveComponentDetails(details);
     console.log("Active component details set:", details);
   } else {
