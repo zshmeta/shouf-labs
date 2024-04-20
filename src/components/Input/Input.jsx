@@ -1,30 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { InputWrapper, Label, InputField } from './Input.styled';
 
-const Input = () => {
-  const [value, setValue] = useState('');
-  const [isValid, setIsValid] = useState(true);
-  const [isActivated, setIsActivated] = useState(false);
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-    setIsValid(e.target.value !== '');
-  };
 
-  const handleActivate = () => {
-    setIsActivated(true);
-  };
-
+const Input = ({ label, ...rest }) => {
   return (
-    <div>
-      <input
-        type="text"
-        value={value}
-        onChange={handleChange}
-        disabled={!isActivated}
-      />
-      {!isValid && isActivated && <p>Please enter a valid value</p>}
-      <button onClick={handleActivate}>Activate</button>
-    </div>
+    <InputWrapper>
+      <Label>{label}</Label>
+      <InputField {...rest} />
+    </InputWrapper>
   );
 };
 

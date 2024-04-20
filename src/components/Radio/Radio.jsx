@@ -1,18 +1,14 @@
+import React from 'react';
+import { RadioWrapper, RadioInput, RadioLabel, RadioIndicator } from './Radio.styled';
 
-import React, { useState } from 'react';
-import { RadioWrapper } from './Radio.styled';
-
-
-
-const Radio = ({  ...props }) => {
-  
-
+const Radio = ({ label, checked, onChange }) => {
   return (
-    <RadioWrapper className={styles.Radio} {...props}>
-      
-      
-      
-      
+    <RadioWrapper>
+      <RadioInput type="radio" checked={checked} onChange={onChange} />
+      <RadioLabel>{label}</RadioLabel>
+      <RadioIndicator />
     </RadioWrapper>
   );
 };
+
+export default Radio;

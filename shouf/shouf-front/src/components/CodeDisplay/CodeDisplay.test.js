@@ -1,24 +1,25 @@
+
 "// Import necessary functions from the testing library
 import { render, screen } from '@testing-library/react';
 
 // Import the component you want to test
-import CheckBox from './CheckBox';
+import CodeDisplay from './CodeDisplay';
 
 // Group related tests using the describe function
-describe('CheckBox Component', () => {
+describe('CodeDisplay Component', () => {
   // Test case: Check if the CompoName component renders correctly
-  it('renders CheckBox Component', async () => {
-    // Render the CheckBox Component
-    render(<CheckBox />);
+  it('renders CodeDisplay Component', async () => {
+    // Render the CodeDisplay Component
+    render(<CodeDisplay />);
 
     // Check if the element is in the document
-    expect(CheckBoxElement).toBeInTheDocument();
+    expect(CodeDisplayElement).toBeInTheDocument();
   });
 
   // Test case: Check if a specific CSS class is applied to an element
   it('applies the correct CSS class to an element', async () => {
-    // Render the CheckBox Component
-    render(<CheckBox />);
+    // Render the CodeDisplay Component
+    render(<CodeDisplay />);
 
     // Find the element with the specified CSS class
     const cssClassElement = await screen.findByTestId('element-with-css-class');
@@ -29,12 +30,12 @@ describe('CheckBox Component', () => {
 
   // Test case: Renders without crashing
   test('renders without crashing', () => {
-    render(<CheckBox />);
+    render(<CodeDisplay />);
   });
 
   // Test case: Matches snapshot
   test('matches snapshot', () => {
-    const { asFragment } = render(<CheckBox />);
+    const { asFragment } = render(<CodeDisplay />);
     expect(asFragment()).toMatchSnapshot();
   });
 

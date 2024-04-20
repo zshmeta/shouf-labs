@@ -2,23 +2,23 @@
 import { render, screen } from '@testing-library/react';
 
 // Import the component you want to test
-import Card from './Card';
+import List from './List';
 
 // Group related tests using the describe function
-describe('Card Component', () => {
+describe('List Component', () => {
   // Test case: Check if the CompoName component renders correctly
-  it('renders Card Component', async () => {
-    // Render the Card Component
-    render(<Card />);
+  it('renders List Component', async () => {
+    // Render the List Component
+    render(<List />);
 
     // Check if the element is in the document
-    expect(CardElement).toBeInTheDocument();
+    expect(ListElement).toBeInTheDocument();
   });
 
   // Test case: Check if a specific CSS class is applied to an element
   it('applies the correct CSS class to an element', async () => {
-    // Render the Card Component
-    render(<Card />);
+    // Render the List Component
+    render(<List />);
 
     // Find the element with the specified CSS class
     const cssClassElement = await screen.findByTestId('element-with-css-class');
@@ -29,12 +29,12 @@ describe('Card Component', () => {
 
   // Test case: Renders without crashing
   test('renders without crashing', () => {
-    render(<Card />);
+    render(<List />);
   });
 
   // Test case: Matches snapshot
   test('matches snapshot', () => {
-    const { asFragment } = render(<Card />);
+    const { asFragment } = render(<List />);
     expect(asFragment()).toMatchSnapshot();
   });
 

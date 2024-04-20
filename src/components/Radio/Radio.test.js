@@ -1,4 +1,3 @@
-
 "// Import necessary functions from the testing library
 import { render, screen } from '@testing-library/react';
 

@@ -1,9 +1,9 @@
 
-    # CheckBox
+    # List
     
     *by zshmeta*
     
-    **CheckBox.README - A Quick Overview**
+    **List.README - A Quick Overview**
     
     ### What is this
     
