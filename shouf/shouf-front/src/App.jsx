@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Sidebar from './components/Sidebar'
-import SandBox from './components/SandBox'
 import  Navbar  from './components/Navbar';
 import CodeDisplay from './components/CodeDisplay'
 import { SelectedComponentProvider } from './components/SelectedComponent'
@@ -25,7 +24,6 @@ const App = () => {
 
         <Sidebar isOpen={sidebarOpen} onToggle={handleSidebarToggle} />
         <CodeDisplay sidebarOpen={sidebarOpen}/>
-        {/* <SandBox sidebarOpen={sidebarOpen} /> */}
       </SelectedComponentProvider>
     </>
   )

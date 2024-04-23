@@ -3,7 +3,8 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background: repeating-linear-gradient( to bottom,#393939, #393939 33px, #FF9900 33px,  #FF9900 35px);
   background: repeating-linear-gradient( to bottom,whitesmoke, whitesmoke 33px, cyan 33px,  cyan 35px);
-  height: 100vh;
+  height: 100%;
 
 }

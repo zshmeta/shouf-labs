@@ -15,11 +15,15 @@ const Navbar = ({ sidebarOpen, setActiveComponent }) => {
             ) : (
                 <Title> Shouf Labs</Title>
             )}
-            <IconContainer>
-                <Img src={DarkModeIcon} alt="Dark Mode" />
-                <Img src={HelpDocsIcon} alt="Help Docs" />
-                <Img src={GitIcon} alt="Git" />
-            </IconContainer>
+          <IconContainer>
+        <Img src={DarkModeIcon} alt="Dark Mode" />
+        <a href="https://tea.zshmeta.dev/zshmeta/shouf-labs" target="_blank" rel="noopener noreferrer">
+          <Img src={HelpDocsIcon} alt="Help Docs" />
+        </a>
+        <a href="https://tea.zshmeta.dev/zshmeta/shouf-labs" target="_blank" rel="noopener noreferrer">
+          <Img src={GitIcon} alt="Git" />
+        </a>
+      </IconContainer>
         </NavbarContainer>
     );
 };

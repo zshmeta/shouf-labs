@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SidebarContainer = styled.div`
   width: ${props => props.$sidebarOpen ? '250px' : '0px'};
-  transition: width 0.3s ease;
+  transition: width 0.3s ease-in-out 0.1s;
   position: fixed;
   left: 0;
   top: 0;
@@ -12,8 +12,12 @@ export const SidebarContainer = styled.div`
   padding-top: 51px;
   border-right: 5px solid #FF9900;
   background: repeating-linear-gradient( to bottom,whitesmoke, whitesmoke 33px, cyan 33px,  cyan 35px);
+  z-index: 100;
 `;
-
+export const SidebarContent = styled.div`
+  opacity: ${props => (props.$sidebarOpen ? 1 : 0)};
+  transition: opacity 0.3s ease-in-out 0.1s;
+`;
 export const SidebarTitle = styled.h2`
   font-size: 37px;
   font-weight: bold;
@@ -39,56 +43,29 @@ export const SidebarTreeBox = styled.div`
   padding: 10px;
   color: #f2f2f2;
 `;
-
 export const SidebarButton = styled.button`
   position: absolute;
-  top: 2px;
-  width: 10px;
+  top: 9px;
+  font-size: 8px;
+  margin: -3px 11px;
   right: ${props => (props.$sidebarOpen ? '-33px' : '-41px')};
   transition: width 0.3s ease;
   background-color: rgba(255 255 255 / 0.62);
   color: #393939;
-  border: 1px solid cyan;
+  border: 4px solid cyan;
+  border-left: 4px solid #FF9900;
+  cursor: pointer;
   border-radius: 0% 30% 30% 0;
+  z-index: 1000;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  &:hover {
+    border-left: 4px solid #FF9900;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  }
+  font-size: 1em;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
 `;
 
 
-
- export const SidebarRefreshButton = styled.button`
- position: absolute;
-  background-color: #FF9900;
-  border-radius: 50%;
-  width: 1px;
-  height: 1px;
-  transition: width 0.5s, height 0.5s;
-  &:hover {
-  width: 10px;
-  height: 20px;
-}
-  & active {
-  animation: fill 2s forwards;
-  }
-
-@keyframes fill {
-  0% {
-    background-color: #FF9900;
-  }
-  100% {
-    background-color: #f00;
-  }
-}
-  `;
-
-  export const SidebarNotification = styled.div`
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 12px;
-
-  `;

@@ -6,8 +6,8 @@ import {
   SidebarTitle,
   SidebarTreeBox,
   SidebarButton,
-  SidebarRefreshButton,
-  SidebarNotification
+  SidebarContent,
+
 } from './Sidebar.styled.js';
 
 const Sidebar = ({ isOpen, onToggle }) => {
@@ -20,20 +20,14 @@ const Sidebar = ({ isOpen, onToggle }) => {
   return (
     <SidebarContainer $sidebarOpen={isOpen}>
       {isOpen && (
-        <>
-          <div className="search-bar">
-            <input type="text" placeholder="Search..." />
-            <button>Search</button>
-          </div>
+         <SidebarContent $sidebarOpen={isOpen}>      
           <SidebarTitle>Components</SidebarTitle>
           <SidebarTreeBox>
             <ComponentTree />
           </SidebarTreeBox>
-          <SidebarRefreshButton onClick={handleRefresh}>Refresh</SidebarRefreshButton>
-        </>
+        </SidebarContent>
       )}
       <SidebarButton onClick={onToggle}>{isOpen ? '>' : '<'}</SidebarButton>
-      <SidebarNotification>{activeComponent ? '1' : '0'}</SidebarNotification>
     </SidebarContainer>
   );
 };

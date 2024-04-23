@@ -1,14 +1,20 @@
 import React, { useContext } from 'react';
-import { CodeDisplayContainer, CodeTitle, CodeBlockWrapper, StyledCodeBlock } from './CodeDisplay.styled';
+import { CodeDisplayContainer, CodeTitle, JsxName, CodeBlockWrapper, StyledCodeBlock, NoComponentSelected } from './CodeDisplay.styled';
 import { SelectedComponentContext } from '../SelectedComponent';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism';  // Feel free to choose another style
+import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
 
 const CodeDisplay = ({ sidebarOpen }) => {
   const { activeComponent } = useContext(SelectedComponentContext);
 
   if (!activeComponent) {
-    return <CodeDisplayContainer $sidebarOpen={sidebarOpen}>Select a component to view the code.</CodeDisplayContainer>;
+    // Use the new styled component for the no component selected message
+    return (
+      <CodeDisplayContainer $sidebarOpen={sidebarOpen}>
+        <NoComponentSelected>Select a component to view the code.</NoComponentSelected>
+      </CodeDisplayContainer>
+    );
   }
 
   const jsxCode = activeComponent.jsx ? activeComponent.jsx.code : 'JSX code unavailable';
@@ -17,21 +23,21 @@ const CodeDisplay = ({ sidebarOpen }) => {
 
   return (
     <CodeDisplayContainer $sidebarOpen={sidebarOpen}>
-      <h1>{activeComponent.jsx.name}</h1>
-      <CodeBlockWrapper>
+      <JsxName>{activeComponent.jsx.name}</JsxName>
         <CodeTitle>Main Code</CodeTitle>
+      <CodeBlockWrapper>
         <StyledCodeBlock language="javascript" style={materialDark}>
           {jsxCode}
         </StyledCodeBlock>
       </CodeBlockWrapper>
-      <CodeBlockWrapper>
         <CodeTitle>Styles</CodeTitle>
+      <CodeBlockWrapper>
         <StyledCodeBlock language="css" style={materialDark}>
           {stylesCode}
         </StyledCodeBlock>
       </CodeBlockWrapper>
-      <CodeBlockWrapper>
         <CodeTitle>Documentation</CodeTitle>
+      <CodeBlockWrapper>
         <StyledCodeBlock language="markdown" style={materialDark}>
           {markdownCode}
         </StyledCodeBlock>
