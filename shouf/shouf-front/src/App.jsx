@@ -24,7 +24,7 @@ const App = () => {
         <Navbar sidebarOpen={sidebarOpen} />
 
         <Sidebar isOpen={sidebarOpen} onToggle={handleSidebarToggle} />
-        <CodeDisplay />
+        <CodeDisplay sidebarOpen={sidebarOpen}/>
         {/* <SandBox sidebarOpen={sidebarOpen} /> */}
       </SelectedComponentProvider>
     </>
